@@ -1,0 +1,44 @@
+.carrossel-container {
+  overflow: hidden;
+  width: 50vw;
+  background-color: #fff;
+  padding: 1rem 0;
+  align-self: center;
+  justify-self: center;
+}
+
+.carrossel-track {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  cursor: grab;
+  overflow-x: scroll;
+  scroll-behavior: auto; // desative smooth para o loop ficar mais suave
+  scrollbar-width: none;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-slide {
+  flex: 0 0 auto;
+  width: calc(30vw / 5); // 5 imagens visíveis por vez (ajuste conforme necessário)
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrossel-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(0.2);
+  transition: transform 0.5s ease;
+}
+
+.carrossel-slide img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0);
+}

@@ -1,483 +1,744 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
-  .card {
-    all: unset;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 40px;
-    width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
-
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-  .github-star-badge {
-    color: #24292e;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
-    border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-    margin-left: 4px;
-    font-weight: 600;
-  }
-
-  .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-    height: 16px;
-    width: 16px;
-    margin-right: 4px;
-  }
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
-  }
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
-</style>
-
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Welcome</span>
-    <div class="spacer"></div>
-    <a aria-label="Angular on X" target="_blank" rel="noopener" href="https://twitter.com/angular" title="X">
-      <svg id="twitter-logo" xmlns="http://www.w3.org/2000/svg" height="24" width="24" data-name="Logo" viewBox="0 0 512 512" fill="#fff">
-        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-      </svg>
-    </a>
-    <a aria-label="Angular on YouTube" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
-      <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
-      </svg>
-    </a>
-</div>
-
-<div class="content" role="main">
-
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-
-    <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
-      <title>Rocket Ship</title>
-      <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
-        <circle id="Ellipse_8" data-name="Ellipse 8" cx="50.839" cy="50.839" r="50.839" transform="translate(141 696)" fill="#dd0031"/>
-        <g id="Group_47" data-name="Group 47" transform="translate(165.185 720.185)">
-          <path id="Path_33" data-name="Path 33" d="M3.4,42.615a3.084,3.084,0,0,0,3.553,3.553,21.419,21.419,0,0,0,12.215-6.107L9.511,30.4A21.419,21.419,0,0,0,3.4,42.615Z" transform="translate(0.371 3.363)" fill="#fff"/>
-          <path id="Path_34" data-name="Path 34" d="M53.3,3.221A3.09,3.09,0,0,0,50.081,0,48.227,48.227,0,0,0,18.322,13.437c-6-1.666-14.991-1.221-18.322,7.218A33.892,33.892,0,0,1,9.439,25.1l-.333.666a3.013,3.013,0,0,0,.555,3.553L23.985,43.641a2.9,2.9,0,0,0,3.553.555l.666-.333A33.892,33.892,0,0,1,32.647,53.3c8.55-3.664,8.884-12.326,7.218-18.322A48.227,48.227,0,0,0,53.3,3.221ZM34.424,9.772a6.439,6.439,0,1,1,9.106,9.106,6.368,6.368,0,0,1-9.106,0A6.467,6.467,0,0,1,34.424,9.772Z" transform="translate(0 0.005)" fill="#fff"/>
-        </g>
-      </g>
-    </svg>
-
-    <span>{{ title }} app is running!</span>
-
-    <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
-      <title>Rocket Ship Smoke</title>
-      <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
-    </svg>
-
-  </div>
-
-  <!-- Resources -->
-  <h2>Resources</h2>
-  <p>Here are some links to help you get started:</p>
-
-  <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-      <span>Learn Angular</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/cli">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-      <span>CLI Documentation</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://material.angular.io">
-      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" width="21.813" height="23.453" viewBox="0 0 179.2 192.7"><path fill="#ffa726" d="M89.4 0 0 32l13.5 118.4 75.9 42.3 76-42.3L179.2 32 89.4 0z"/><path fill="#fb8c00" d="M89.4 0v192.7l76-42.3L179.2 32 89.4 0z"/><path fill="#ffe0b2" d="m102.9 146.3-63.3-30.5 36.3-22.4 63.7 30.6-36.7 22.3z"/><path fill="#fff3e0" d="M102.9 122.8 39.6 92.2l36.3-22.3 63.7 30.6-36.7 22.3z"/><path fill="#fff" d="M102.9 99.3 39.6 68.7l36.3-22.4 63.7 30.6-36.7 22.4z"/></svg>
-      <span>Angular Material</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://blog.angular.io/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
-      <span>Angular Blog</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/devtools/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M14.73,13.31C15.52,12.24,16,10.93,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.43,0,2.74-0.48,3.81-1.27L19.59,21L21,19.59L14.73,13.31z M9.5,14C7.01,14,5,11.99,5,9.5S7.01,5,9.5,5S14,7.01,14,9.5 S11.99,14,9.5,14z"/><polygon points="10.29,8.44 9.5,6 8.71,8.44 6.25,8.44 8.26,10.03 7.49,12.5 9.5,10.97 11.51,12.5 10.74,10.03 12.75,8.44"/></g></g></svg>
-      <span>Angular DevTools</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-  </div>
-
-  <!-- Next Steps -->
-  <h2>Next Steps</h2>
-  <p>What do you want to do next with your app?</p>
-
-  <input type="hidden" #selection>
-
-  <div class="card-container">
-    <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>New Component</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Angular Material</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add PWA Support</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add Dependency</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'test'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Run and Watch Tests</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Build for Production</span>
-    </button>
-  </div>
-
-  <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build</pre>
-  </div>
-
-  <!-- Links -->
-  <div class="card-container">
-    <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
-        <title>Meetup Logo</title>
-        <path id="logo--mSwarm" d="M21.221,14.95A4.393,4.393,0,0,1,17.6,19.281a4.452,4.452,0,0,1-.8.069c-.09,0-.125.035-.154.117a2.939,2.939,0,0,1-2.506,2.091,2.868,2.868,0,0,1-2.248-.624.168.168,0,0,0-.245-.005,3.926,3.926,0,0,1-2.589.741,4.015,4.015,0,0,1-3.7-3.347,2.7,2.7,0,0,1-.043-.38c0-.106-.042-.146-.143-.166a3.524,3.524,0,0,1-1.516-.69A3.623,3.623,0,0,1,2.23,14.557a3.66,3.66,0,0,1,1.077-3.085.138.138,0,0,0,.026-.2,3.348,3.348,0,0,1-.451-1.821,3.46,3.46,0,0,1,2.749-3.28.44.44,0,0,0,.355-.281,5.072,5.072,0,0,1,3.863-3,5.028,5.028,0,0,1,3.555.666.31.31,0,0,0,.271.03A4.5,4.5,0,0,1,18.3,4.7a4.4,4.4,0,0,1,1.334,2.751,3.658,3.658,0,0,1,.022.706.131.131,0,0,0,.1.157,2.432,2.432,0,0,1,1.574,1.645,2.464,2.464,0,0,1-.7,2.616c-.065.064-.051.1-.014.166A4.321,4.321,0,0,1,21.221,14.95ZM13.4,14.607a2.09,2.09,0,0,0,1.409,1.982,4.7,4.7,0,0,0,1.275.221,1.807,1.807,0,0,0,.9-.151.542.542,0,0,0,.321-.545.558.558,0,0,0-.359-.534,1.2,1.2,0,0,0-.254-.078c-.262-.047-.526-.086-.787-.138a.674.674,0,0,1-.617-.75,3.394,3.394,0,0,1,.218-1.109c.217-.658.509-1.286.79-1.918a15.609,15.609,0,0,0,.745-1.86,1.95,1.95,0,0,0,.06-1.073,1.286,1.286,0,0,0-1.051-1.033,1.977,1.977,0,0,0-1.521.2.339.339,0,0,1-.446-.042c-.1-.092-.2-.189-.307-.284a1.214,1.214,0,0,0-1.643-.061,7.563,7.563,0,0,1-.614.512A.588.588,0,0,1,10.883,8c-.215-.115-.437-.215-.659-.316a2.153,2.153,0,0,0-.695-.248A2.091,2.091,0,0,0,7.541,8.562a9.915,9.915,0,0,0-.405.986c-.559,1.545-1.015,3.123-1.487,4.7a1.528,1.528,0,0,0,.634,1.777,1.755,1.755,0,0,0,1.5.211,1.35,1.35,0,0,0,.824-.858c.543-1.281,1.032-2.584,1.55-3.875.142-.355.28-.712.432-1.064a.548.548,0,0,1,.851-.24.622.622,0,0,1,.185.539,2.161,2.161,0,0,1-.181.621c-.337.852-.68,1.7-1.018,2.552a2.564,2.564,0,0,0-.173.528.624.624,0,0,0,.333.71,1.073,1.073,0,0,0,.814.034,1.22,1.22,0,0,0,.657-.655q.758-1.488,1.511-2.978.35-.687.709-1.37a1.073,1.073,0,0,1,.357-.434.43.43,0,0,1,.463-.016.373.373,0,0,1,.153.387.7.7,0,0,1-.057.236c-.065.157-.127.316-.2.469-.42.883-.846,1.763-1.262,2.648A2.463,2.463,0,0,0,13.4,14.607Zm5.888,6.508a1.09,1.09,0,0,0-2.179.006,1.09,1.09,0,0,0,2.179-.006ZM1.028,12.139a1.038,1.038,0,1,0,.01-2.075,1.038,1.038,0,0,0-.01,2.075ZM13.782.528a1.027,1.027,0,1,0-.011,2.055A1.027,1.027,0,0,0,13.782.528ZM22.21,6.95a.882.882,0,0,0-1.763.011A.882.882,0,0,0,22.21,6.95ZM4.153,4.439a.785.785,0,1,0,.787-.78A.766.766,0,0,0,4.153,4.439Zm8.221,18.22a.676.676,0,1,0-.677.666A.671.671,0,0,0,12.374,22.658ZM22.872,12.2a.674.674,0,0,0-.665.665.656.656,0,0,0,.655.643.634.634,0,0,0,.655-.644A.654.654,0,0,0,22.872,12.2ZM7.171-.123A.546.546,0,0,0,6.613.43a.553.553,0,1,0,1.106,0A.539.539,0,0,0,7.171-.123ZM24.119,9.234a.507.507,0,0,0-.493.488.494.494,0,0,0,.494.494.48.48,0,0,0,.487-.483A.491.491,0,0,0,24.119,9.234Zm-19.454,9.7a.5.5,0,0,0-.488-.488.491.491,0,0,0-.487.5.483.483,0,0,0,.491.479A.49.49,0,0,0,4.665,18.936Z" transform="translate(0 0.123)" fill="#f64060"/>
-      </svg>
-    </a>
-
-    <a class="circle-link" title="Join the Conversation on Discord" href="https://discord.gg/angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
-        <title>Discord Logo</title>
-        <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
-        <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-      Love Angular?&nbsp;
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
+<html lang="pt-BR">
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neogrid — Soluções de ponta a ponta para a gestão da sua empresa</title>
+  <meta name="description" content="Soluções de ponta a ponta para a gestão da sua empresa">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <link rel="icon" href="https://neogrid.com/wp-content/themes/neogrid/img/favicon/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="https://neogrid.com/wp-content/themes/neogrid/img/favicon/favicon-180.png" sizes="180x180">
+
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Neogrid">
+  <meta property="og:description" content="Soluções de ponta a ponta para a gestão da sua empresa">
+  <meta property="og:url" content="https://neogrid.com/">
+  <meta property="og:site_name" content="Neogrid">
+  <meta property="og:image"
+    content="http://neogrid.com/wp-content/uploads/2024/03/424651383_786144556891353_6494573304525456675_n.jpg">
+  <meta property="og:image:width" content="1575">
+  <meta property="og:image:height" content="600">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@neogrid">
+
+  <link rel="canonical" href="https://neogrid.com/">
+  <link rel="https://api.w.org/" href="https://neogrid.com/wp-json/">
+
+  <link rel="stylesheet" id="wp-block-library-css"
+    href="https://neogrid.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="bootstrap-css-css"
+    href="https://neogrid.com/wp-content/themes/neogrid/css/bootstrap.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="font-awesome-css"
+    href="https://neogrid.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css"
+    type="text/css" media="all">
+  <link rel="stylesheet" id="style-css-css"
+    href="https://neogrid.com/wp-content/cache/autoptimize/1/css/autoptimize_single_6739d4f8cdecbefdae4f76d1a0a110dd.css"
+    type="text/css" media="all">
+
+  <meta name="generator"
+    content="Elementor 3.22.3; features: e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+</head>
+
+
+<body class="home blog wp-custom-logo lang-pt elementor-default elementor-kit-6" cz-shortcut-listen="true">
+
+  <app-navbar></app-navbar>
+
+  <main class="home bg-blue">
+    <app-banner></app-banner>
+
+    <app-marcas></app-marcas>
+
+    <app-servicos></app-servicos>
+
+    <section class="result bg-blue">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="f-bold c-black mt-5">Empresas que atingem <span class="c-red">grandes
+                resultados</span> com a Neogrid</h2> <a href="https://neogrid.com/cases/"
+              class="btn btn-primary btn-black mb-3">Acesse os cases de sucesso</a>
+          </div>
+          <div class="col-md-6"> <svg class="img-fluid" width="673" height="708" viewBox="0 0 700 708" fill="none"
+              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern10)"></path>
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern11)"></path>
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern12)"></path>
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern13)"></path>
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern14)"></path>
+              <path
+                d="M270.121 16.4786C307.187 -4.86447 352.813 -4.86449 389.879 16.4786L592.907 133.382C630.103 154.8 653.027 194.453 653.027 237.375V470.625C653.027 513.547 630.103 553.2 592.907 574.618L389.879 691.521C352.813 712.865 307.187 712.865 270.121 691.521L67.0933 574.618C29.8972 553.2 6.97253 513.547 6.97253 470.625V237.375C6.97253 194.453 29.8971 154.8 67.0933 133.382L270.121 16.4786Z"
+                fill="url(#pattern15)"></path>
+              <path
+                d="M416.084 35.8525C450.428 30.0334 485.267 42.9786 507.479 69.8117L665.883 261.177C688.095 288.01 694.304 324.654 682.171 357.306L595.647 590.171C583.514 622.824 554.884 646.523 520.54 652.342L275.611 693.842C241.267 699.661 206.427 686.716 184.216 659.883L25.811 468.518C3.59962 441.685 -2.60924 405.04 9.5232 372.388L96.0478 139.523C108.18 106.871 136.811 83.1716 171.155 77.3525L416.084 35.8525Z"
+                stroke="#0080C4" stroke-width="5"></path>
+              <defs>
+                <pattern id="pattern10" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_3006_267" transform="matrix(0.000779155 0 0 0.00074125 -0.279155 0)"></use>
+                </pattern>
+                <image id="image0_3006_267" width="2300" height="1380"
+                  xlink:href="https://neogrid.com/wp-content/uploads/2024/04/depoimentos-tag-scaled-1.webp">
+                </image>
+              </defs>
+            </svg></div>
         </div>
-      </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
+        <div class="col-md-12 depoimentos">
+          <div class="swiper-container swiper-testimonial">
+            <div class="swiper-wrapper slick-initialized slick-slider slick-dotted" role="toolbar">
+              <div aria-live="polite" class="slick-list draggable">
+                <div class="slick-track" style="opacity: 1; width: 4080px; transform: translate3d(-510px, 0px, 0px);"
+                  role="listbox">
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide slick-cloned" style="width: 474px;"
+                    tabindex="-1" role="option" aria-describedby="slick-slide15" data-slick-index="-1" id=""
+                    aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/06/clamed-60x60.png"
+                          alt="Cases Grupo Clamed">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/clamed-case-de-sucesso-portugues?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Grupo Clamed</h5>
+                      <p class="read"></p>
+                      <p>Rede de farmácias otimiza produção dos encartes de ofertas com solução
+                        Neogrid.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide slick-current slick-active"
+                    style="width: 474px;" tabindex="-1" role="option" aria-describedby="slick-slide10"
+                    data-slick-index="0" aria-hidden="false">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Adcos-60x60.webp" alt="Cases Adcos">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/case-de-sucesso-adcos?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="0"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Adcos</h5>
+                      <p class="read"></p>
+                      <p>Adcos otimiza sua atuação no canal Farma com uso do aplicativo Trade
+                        Force.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide" style="width: 474px;" tabindex="-1"
+                    role="option" aria-describedby="slick-slide11" data-slick-index="1" aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Ambev-60x60.webp" alt="Cases Ambev">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/case-de-sucesso-ambev-mkt?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Ambev</h5>
+                      <p class="read"></p>
+                      <p>Ambev aumenta em 195% as vendas com E-commerce Insights da Lett.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide" style="width: 474px;" tabindex="-1"
+                    role="option" aria-describedby="slick-slide12" data-slick-index="2" aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Danone-60x60.webp" alt="Cases Danone">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/case-danone?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Danone</h5>
+                      <p class="read"></p>
+                      <p>Danone simplifica processos e otimiza a cadeia de suprimentos com o EDI
+                        Mercantil</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide" style="width: 474px;" tabindex="-1"
+                    role="option" aria-describedby="slick-slide13" data-slick-index="3" aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Nestle-60x60.webp" alt="Cases Nestlé">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/nestle-case-de-sucesso-portugues?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Nestlé</h5>
+                      <p class="read"></p>
+                      <p>Saiba como a Nestlé dobrou a taxa de conversão no e-commerce.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide" style="width: 474px;" tabindex="-1"
+                    role="option" aria-describedby="slick-slide14" data-slick-index="4" aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Gran-Coffee-60x60.webp"
+                          alt="Cases Gran Coffee">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/case-gran-coffee?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Gran Coffee</h5>
+                      <p class="read"></p>
+                      <p>Gran Coffee aumenta sell-out em 158% com uso de solução Neogrid.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide" style="width: 474px;" tabindex="-1"
+                    role="option" aria-describedby="slick-slide15" data-slick-index="5" aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/06/clamed-60x60.png"
+                          alt="Cases Grupo Clamed">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/clamed-case-de-sucesso-portugues?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Grupo Clamed</h5>
+                      <p class="read"></p>
+                      <p>Rede de farmácias otimiza produção dos encartes de ofertas com solução
+                        Neogrid.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide d-flex align-items-stretch slick-slide slick-cloned" style="width: 474px;"
+                    tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="6" id=""
+                    aria-hidden="true">
+                    <div class="review-box">
+                      <div class="media"> <img class="mr-3"
+                          src="https://neogrid.com/wp-content/uploads/2024/03/Adcos-60x60.webp" alt="Cases Adcos">
+                        <div class="media-body">
+                          <p class="user-post"> <a
+                              href="https://hub.neogrid.com/case-de-sucesso-adcos?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pagina-cases"
+                              target="_blank" tabindex="-1"> Leia a história <span><svg width="20" height="20"
+                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M14.9111 12.2381L14.9053 7.17635C14.9039 6.73604 14.7285 6.31414 14.4171 6.0028C14.1058 5.69145 13.6839 5.51596 13.2436 5.51465L8.18185 5.50876C7.96169 5.50941 7.75074 5.59716 7.59507 5.75283C7.4394 5.9085 7.35165 6.11945 7.351 6.33961C7.35054 6.44962 7.37188 6.55863 7.41377 6.66035C7.45566 6.76207 7.51728 6.85449 7.59507 6.93228C7.67285 7.01007 7.76528 7.07169 7.867 7.11358C7.96872 7.15547 8.07773 7.1768 8.18774 7.17635L12.065 7.17635L5.58323 13.6582C5.42695 13.8144 5.33915 14.0264 5.33915 14.2474C5.33915 14.4684 5.42695 14.6804 5.58323 14.8367C5.73951 14.993 5.95147 15.0808 6.17248 15.0808C6.3935 15.0808 6.60546 14.993 6.76174 14.8367L13.2436 8.35486L13.2436 12.2322C13.2428 12.4533 13.3299 12.6657 13.4857 12.8226C13.6415 12.9795 13.8533 13.0681 14.0744 13.0689C14.2955 13.0697 14.5079 12.9826 14.6648 12.8268C14.8218 12.671 14.9104 12.4592 14.9111 12.2381Z"
+                                    fill="#072E43"></path>
+                                </svg></span></a></p>
+                        </div>
+                      </div>
+                      <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                      <h5>Adcos</h5>
+                      <p class="read"></p>
+                      <p>Adcos otimiza sua atuação no canal Farma com uso do aplicativo Trade
+                        Force.</p>
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="slick-dots" style="" role="tablist">
+                <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true"
+                  aria-controls="navigation10" id="slick-slide10"><button type="button" data-role="none" role="button"
+                    tabindex="0">1</button></li>
+                <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation11"
+                  id="slick-slide11"><button type="button" data-role="none" role="button" tabindex="0">2</button></li>
+                <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation12"
+                  id="slick-slide12"><button type="button" data-role="none" role="button" tabindex="0">3</button></li>
+                <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation13"
+                  id="slick-slide13"><button type="button" data-role="none" role="button" tabindex="0">4</button></li>
+                <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation14"
+                  id="slick-slide14"><button type="button" data-role="none" role="button" tabindex="0">5</button></li>
+                <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation15"
+                  id="slick-slide15"><button type="button" data-role="none" role="button" tabindex="0">6</button></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-r"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 w-50 text-center">
+              <p class="sub-title">Posicionamento</p>
+              <h2 class="txt-center f-bold-6">Temos a <b>maior</b> malha de dados da cadeia de consumo do
+                Brasil</h2>
+            </div>
+            <div class="col-12 col-md-3 pos"> <svg width="673" height="2022" viewBox="0 0 373 1922" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path
+                  d="M27.629 40.0211C53.8159 16.3795 90.6263 8.5043 124.194 19.3621L270.854 66.8005C304.422 77.6582 329.647 105.599 337.028 140.099L369.275 290.829C376.656 325.329 365.071 361.145 338.884 384.787L224.471 488.079C198.284 511.721 161.474 519.596 127.906 508.738L-18.7542 461.3C-52.3219 450.442 -77.5472 422.501 -84.928 388.001L-117.175 237.271C-124.556 202.771 -112.971 166.955 -86.7839 143.313L27.629 40.0211Z"
+                  stroke="#F0000B" stroke-width="2.50001"></path>
+                <path
+                  d="M76.0148 26.964C106.973 9.07386 145.127 9.07387 176.085 26.964L309.046 103.801C339.966 121.669 359.011 154.671 359.011 190.383V344.217C359.011 379.93 339.966 412.931 309.046 430.8L176.085 507.636C145.127 525.527 106.973 525.527 76.0147 507.636L-56.9465 430.8C-87.8671 412.931 -106.912 379.93 -106.912 344.217V190.383C-106.912 154.671 -87.867 121.669 -56.9465 103.801L76.0148 26.964Z"
+                  fill="url(#posi)"></path>
+                <path
+                  d="M22.5011 2.33014C27.1421 -0.349361 32.8601 -0.34936 37.5011 2.33014L57.1422 13.6699C61.7832 16.3494 64.6422 21.3013 64.6422 26.6603V49.3399C64.6422 54.6989 61.7832 59.6508 57.1422 62.3303L37.5011 73.6701C32.8601 76.3496 27.1421 76.3496 22.5011 73.6701L2.85999 62.3303C-1.78104 59.6508 -4.64003 54.6989 -4.64003 49.3399V26.6603C-4.64003 21.3013 -1.78103 16.3494 2.85999 13.6699L22.5011 2.33014Z"
+                  fill="#0080C4"></path>
+                <defs>
+                  <pattern id="posi" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image10" transform="translate(-0.281976) scale(0.000781976)">
+                    </use>
+                  </pattern>
+                  <image id="image10" width="2000" height="1280"
+                    xlink:href="https://neogrid.com/wp-content/uploads/2024/04/card-scaled-1.webp">
+                  </image>
+                </defs>
+              </svg></div>
+            <div class="col-12 col-md-9">
+              <div class="bubble-container">
+                <div class="bubble">
+                  <p>+500mil</p> <small>PDVs</small>
+                </div>
+                <div class="bubble">
+                  <p>+5mil</p> <small>indústrias</small>
+                </div>
+                <div class="bubble">
+                  <p>+1bilhão</p> <small>de NFs</small>
+                </div>
+                <div class="bubble">
+                  <p>+6mil</p> <small>distribuidores</small>
+                </div>
+                <div class="bubble">
+                  <p>+3,2mil</p> <small>varejos online</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="bg-radial-blue"></div>
+    <section class="cta mt-10">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mt-5">
+            <h2 class="f-bold c-white">Veja as soluções daNeogrid em ação</h2>
+            <p>Fale com um especialista e entenda na prática a entrega de resultados dos nossos produtos.
+            </p> <a href="https://neogrid.com/fale-com-um-especialista" class="btn btn-primary btn-red mb-3">Quero
+              conversar com vendas</a>
+          </div>
+          <div class="col-md-6"> <svg class="mx-auto d-md-block d-none" width="582" height="561" viewBox="0 0 682 661"
+              fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <mask id="mask0_3006_267" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="88" y="130" width="604"
+                height="531">
+                <path d="M88 293C88 202.978 160.978 130 251 130H692V661H88V293Z" fill="#232325"></path>
+              </mask>
+              <g mask="url(#mask0_3006_267)">
+                <path
+                  d="M249.595 196.599C288.689 161.337 343.615 149.586 393.715 165.766L517.155 205.63C567.324 221.833 605.032 263.58 616.061 315.135L643.119 441.608C654.148 493.163 636.823 546.684 597.674 581.995L501.35 668.875C462.255 704.137 407.33 715.888 357.23 699.708L233.79 659.844C183.62 643.642 145.913 601.894 134.883 550.34L107.826 423.866C96.7963 372.312 114.122 318.79 153.271 283.479L249.595 196.599Z"
+                  stroke="#0080C4" stroke-width="5"></path>
+              </g>
+              <rect width="635" height="661" fill="url(#cta0)"></rect>
+              <defs>
+                <pattern id="cta0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image_cta" transform="matrix(0.000254323 0 0 0.00024432 0 -0.000367057)"></use>
+                </pattern>
+                <image id="image_cta" width="3932" height="4096" x="300" y="45"
+                  xlink:href="https://neogrid.com/wp-content/uploads/2024/09/cta2.webp"></image>
+              </defs>
+            </svg></div>
+        </div>
+      </div>
+    </section>
+  </main> <a href="#top" class="go-to-top" style="opacity: 0; visibility: hidden;"> <i class="fa fa-arrow-up"
+      aria-hidden="true"></i> </a>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-block d-sm-none mb-5">
+          <section id="block-7" class="widget widget_block"><svg class="mt-4" width="196" height="51"
+              viewBox="0 0 196 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_3006_1260)">
+                <path
+                  d="M96.6661 38.534C95.1239 38.534 93.7257 38.2701 92.4794 37.7424C91.2331 37.2147 90.1623 36.495 89.2833 35.5914C88.4044 34.6879 87.7253 33.6323 87.2459 32.4329C86.7664 31.2335 86.5267 29.9701 86.5267 28.6427C86.5267 27.2673 86.7584 25.9799 87.2219 24.7645C87.6853 23.549 88.3645 22.4855 89.2433 21.5659C90.1223 20.6463 91.1929 19.9187 92.4553 19.375C93.7177 18.8392 95.132 18.5674 96.6979 18.5674C98.2639 18.5674 99.6701 18.8393 100.901 19.375C102.139 19.9108 103.194 20.6385 104.057 21.542C104.928 22.4456 105.591 23.501 106.038 24.7005C106.494 25.9 106.717 27.1554 106.717 28.4508C106.717 28.7707 106.709 29.0746 106.701 29.3703C106.685 29.6662 106.662 29.906 106.614 30.1059H91.7362C91.8081 30.8656 91.9919 31.5373 92.2875 32.129C92.5831 32.7207 92.9586 33.2165 93.4301 33.6403C93.8935 34.0561 94.4209 34.3759 95.0121 34.5998C95.6033 34.8237 96.2106 34.9276 96.8497 34.9276C97.8325 34.9276 98.7514 34.6877 99.6223 34.2079C100.493 33.7282 101.084 33.0964 101.404 32.3128L105.631 33.4882C104.92 34.9595 103.785 36.1669 102.235 37.1105C100.669 38.062 98.8153 38.5338 96.666 38.5338L96.6661 38.534ZM101.66 26.9154C101.54 25.4681 101.005 24.3087 100.062 23.4371C99.1189 22.5655 97.9764 22.1337 96.6261 22.1337C95.9629 22.1337 95.3477 22.2536 94.7724 22.4855C94.1971 22.7174 93.6857 23.0452 93.2464 23.461C92.807 23.8768 92.4474 24.3806 92.1597 24.9723C91.8801 25.564 91.7123 26.2117 91.6643 26.9234H101.66V26.9154Z"
+                  fill="white"></path>
+                <path
+                  d="M118.623 38.5339C117.057 38.5339 115.65 38.2621 114.396 37.7263C113.149 37.1906 112.087 36.4548 111.216 35.5354C110.345 34.6159 109.682 33.5522 109.21 32.3528C108.747 31.1534 108.515 29.89 108.515 28.5626C108.515 27.2112 108.747 25.9399 109.21 24.7404C109.674 23.5409 110.345 22.4775 111.216 21.5579C112.087 20.6383 113.141 19.9106 114.396 19.367C115.642 18.8312 117.057 18.5593 118.623 18.5593C120.189 18.5593 121.595 18.8313 122.825 19.367C124.064 19.9028 125.118 20.6384 125.981 21.5579C126.852 22.4775 127.515 23.541 127.987 24.7404C128.45 25.9398 128.682 27.2192 128.682 28.5626C128.682 29.89 128.45 31.1454 127.987 32.3528C127.523 33.5522 126.86 34.6158 126.005 35.5354C125.15 36.4549 124.096 37.1826 122.849 37.7263C121.595 38.262 120.189 38.5339 118.623 38.5339ZM113.589 28.5706C113.589 29.4261 113.717 30.2098 113.972 30.9054C114.228 31.601 114.587 32.2088 115.035 32.7286C115.49 33.2403 116.018 33.6401 116.633 33.92C117.248 34.1999 117.903 34.3438 118.614 34.3438C119.326 34.3438 119.989 34.1999 120.596 33.92C121.211 33.6401 121.739 33.2403 122.194 32.7286C122.649 32.2169 123.001 31.6011 123.257 30.8894C123.512 30.1778 123.64 29.394 123.64 28.5385C123.64 27.7069 123.512 26.9313 123.257 26.2196C123.001 25.5079 122.642 24.8922 122.194 24.3804C121.739 23.8687 121.211 23.4689 120.596 23.189C119.981 22.9091 119.326 22.7651 118.614 22.7651C117.903 22.7651 117.24 22.9091 116.633 23.2049C116.018 23.5007 115.49 23.9006 115.035 24.4203C114.58 24.932 114.228 25.5478 113.972 26.2594C113.717 26.9632 113.589 27.7387 113.589 28.5704V28.5706Z"
+                  fill="white"></path>
+                <path
+                  d="M139.149 38.2779C137.846 38.2779 136.672 38.022 135.625 37.5023C134.571 36.9906 133.66 36.2868 132.885 35.3913C132.11 34.4957 131.519 33.4642 131.103 32.2807C130.688 31.1053 130.48 29.8578 130.48 28.5305C130.48 27.1312 130.704 25.8357 131.143 24.6363C131.583 23.4369 132.198 22.3814 132.981 21.4778C133.764 20.5743 134.707 19.8627 135.809 19.3428C136.912 18.8311 138.126 18.5671 139.445 18.5671C140.939 18.5671 142.249 18.9029 143.376 19.5747C144.502 20.2465 145.437 21.15 146.164 22.2774V18.895H150.463V37.2383C150.463 38.6616 150.191 39.9331 149.656 41.0605C149.12 42.188 148.377 43.1475 147.435 43.9312C146.492 44.7148 145.365 45.3144 144.055 45.7303C142.745 46.1462 141.314 46.3541 139.772 46.3541C137.663 46.3541 135.897 46.0022 134.467 45.3066C133.037 44.6109 131.806 43.6194 130.775 42.348L133.46 39.7412C134.195 40.6448 135.122 41.3565 136.233 41.8761C137.343 42.3878 138.526 42.6518 139.78 42.6518C140.539 42.6518 141.266 42.5479 141.969 42.3399C142.664 42.132 143.288 41.8042 143.823 41.3644C144.358 40.9247 144.782 40.3569 145.093 39.6692C145.397 38.9815 145.549 38.1739 145.549 37.2463V34.8234C144.91 35.9269 144.015 36.7744 142.864 37.3822C141.706 37.9738 140.467 38.2777 139.149 38.2777L139.149 38.2779ZM140.795 34.3438C141.33 34.3438 141.849 34.2558 142.337 34.0879C142.824 33.9199 143.28 33.6801 143.695 33.3922C144.111 33.0964 144.478 32.7525 144.798 32.3606C145.117 31.9688 145.357 31.553 145.533 31.1132V26.5154C145.093 25.3879 144.398 24.4843 143.456 23.7966C142.513 23.1089 141.53 22.7651 140.499 22.7651C139.74 22.7651 139.053 22.933 138.438 23.2608C137.823 23.5886 137.295 24.0365 136.856 24.5882C136.416 25.14 136.081 25.7717 135.849 26.4833C135.617 27.1949 135.498 27.9306 135.498 28.6902C135.498 29.4739 135.633 30.2095 135.905 30.8972C136.177 31.5849 136.544 32.1846 137.024 32.6963C137.503 33.208 138.054 33.6158 138.693 33.9118C139.341 34.1917 140.036 34.3436 140.795 34.3436V34.3438Z"
+                  fill="white"></path>
+                <path
+                  d="M165.124 23.1652C163.63 23.1892 162.296 23.4771 161.121 24.0289C159.947 24.5806 159.1 25.4043 158.588 26.5077V38.1663H153.658V18.9034H158.181V23.0214C158.524 22.3577 158.924 21.766 159.395 21.2383C159.859 20.7106 160.362 20.2548 160.905 19.8629C161.441 19.471 161.992 19.1672 162.543 18.9593C163.095 18.7515 163.63 18.6475 164.141 18.6475C164.413 18.6475 164.613 18.6475 164.749 18.6475C164.884 18.6475 165.012 18.6635 165.132 18.6874V23.1652H165.124Z"
+                  fill="white"></path>
+                <path
+                  d="M167.529 38.1659V18.903H172.451V38.1659H167.529ZM172.818 14.609C172.818 16.1763 171.548 17.4396 169.99 17.4396C168.424 17.4396 167.161 16.1682 167.161 14.609C167.161 13.0498 168.432 11.7783 169.99 11.7783C171.556 11.7783 172.818 13.0497 172.818 14.609Z"
+                  fill="white"></path>
+                <path
+                  d="M183.98 38.5339C182.654 38.5339 181.432 38.278 180.305 37.7582C179.178 37.2465 178.211 36.5348 177.405 35.6233C176.598 34.7197 175.966 33.6562 175.511 32.4408C175.056 31.2253 174.832 29.9219 174.832 28.5226C174.832 27.1233 175.048 25.8279 175.471 24.6285C175.903 23.4291 176.494 22.3735 177.253 21.47C178.012 20.5664 178.915 19.8548 179.969 19.3349C181.024 18.8233 182.175 18.5593 183.421 18.5593C184.843 18.5593 186.122 18.9031 187.264 19.5908C188.407 20.2785 189.294 21.174 189.925 22.2775V12.1462H194.847V32.5046C194.847 33.0163 194.935 33.3842 195.102 33.6081C195.27 33.832 195.566 33.9519 195.981 33.9758V38.1659C195.126 38.3338 194.423 38.4218 193.888 38.4218C193.009 38.4218 192.282 38.1979 191.723 37.7581C191.155 37.3183 190.844 36.7426 190.764 36.031L190.652 34.8155C189.941 36.0389 188.982 36.9665 187.768 37.5903C186.569 38.222 185.299 38.5339 183.98 38.5339ZM185.267 34.3438C185.73 34.3438 186.21 34.2638 186.697 34.1038C187.184 33.9439 187.64 33.72 188.055 33.4241C188.471 33.1283 188.846 32.7844 189.174 32.3925C189.501 32.0007 189.757 31.5689 189.925 31.1051V26.5072C189.725 25.9715 189.454 25.4757 189.102 25.02C188.75 24.5642 188.343 24.1723 187.888 23.8446C187.432 23.5166 186.961 23.2528 186.457 23.053C185.954 22.861 185.459 22.7571 184.971 22.7571C184.236 22.7571 183.557 22.9171 182.934 23.2368C182.311 23.5566 181.775 23.9885 181.336 24.5402C180.896 25.092 180.553 25.7237 180.305 26.4354C180.057 27.1471 179.938 27.8827 179.938 28.6423C179.938 29.45 180.073 30.2016 180.345 30.8814C180.617 31.5691 180.984 32.1688 181.448 32.6805C181.911 33.1922 182.47 33.6 183.117 33.8959C183.765 34.1918 184.476 34.3437 185.267 34.3437V34.3438Z"
+                  fill="white"></path>
+                <path
+                  d="M79.1121 12.7461V29.5862L65.689 12.7461H61.4464V38.2461H66.7838V21.8299L79.7196 38.2461H84.0502V12.7461H79.1121Z"
+                  fill="white"></path>
+                <path
+                  d="M40.7523 7.38862L38.7868 6.25317C35.7506 13.3219 31.6198 19.8067 26.6021 25.5001C31.6197 31.1854 35.7506 37.6783 38.7868 44.747L40.7523 43.6116C45.2746 40.9968 48.0631 36.1671 48.0631 30.9375V20.0626C48.071 14.8331 45.2826 10.0034 40.7523 7.38862Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.8"
+                  d="M16.7665 34.7596C20.8733 39.4854 24.2371 44.8829 26.674 50.7601C28.296 50.4642 29.886 49.8964 31.356 49.0408L38.7947 44.7389C35.7585 37.6702 31.6278 31.1853 26.61 25.4919C23.6218 28.8823 20.3299 31.9849 16.7664 34.7596H16.7665Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.6"
+                  d="M5.20496 42.1082C5.86017 42.6599 6.56326 43.1636 7.32228 43.6035L16.7265 49.0329C19.7787 50.8001 23.3102 51.3677 26.666 50.7522C24.2291 44.8749 20.8733 39.4854 16.7584 34.7517C13.1709 37.5584 9.29579 40.0212 5.20496 42.1083V42.1082Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.8"
+                  d="M26.61 25.5C31.6277 19.8147 35.7585 13.3218 38.7947 6.25311L31.3561 1.95118C29.8779 1.1036 28.296 0.53583 26.666 0.23999C24.229 6.11724 20.8732 11.5067 16.7584 16.2404C20.3299 19.0152 23.6218 22.1177 26.61 25.5Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.6"
+                  d="M26.666 0.239966C23.3022 -0.375719 19.7707 0.191954 16.7265 1.95912L7.32228 7.38863C6.56326 7.82841 5.86007 8.33213 5.20496 8.88387C9.29589 10.9709 13.1709 13.4337 16.7664 16.2324C20.8733 11.5066 24.237 6.11722 26.666 0.239966Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.6"
+                  d="M16.7665 16.2405C13.7543 19.7109 10.3346 22.8214 6.59521 25.5001C10.3426 28.1788 13.7542 31.2894 16.7665 34.7597C20.33 31.9849 23.6219 28.8824 26.6102 25.5001C23.6219 22.1176 20.33 19.0151 16.7665 16.2405Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.4"
+                  d="M6.58721 25.5C4.49386 26.9953 2.29661 28.3627 0.0114746 29.578V30.9294C0.0114746 35.2793 1.94507 39.3575 5.20492 42.1082C9.29585 40.0212 13.1709 37.5583 16.7665 34.7596C13.7543 31.2892 10.3346 28.1787 6.58721 25.5Z"
+                  fill="#F0000B"></path>
+                <path opacity="0.4"
+                  d="M16.7665 16.2403C13.171 13.4417 9.30383 10.9788 5.20504 8.89185C1.94519 11.6426 0.0115967 15.7126 0.0115967 20.0626V21.4139C2.29673 22.6294 4.49399 23.9967 6.58733 25.5C10.3347 22.8213 13.7543 19.7028 16.7666 16.2404L16.7665 16.2403Z"
+                  fill="#F0000B"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_3006_1260">
+                  <rect width="196" height="51" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg> <small class="d-block mb-3 text-muted mt-3">A Neogrid é uma multinacional referência em
+              soluções
+              inteligentes para a gestão da cadeia de suprimentos.</small></section> <small> © 2025
+            Neogrid — Todos os direitos reservados</small>
+        </div>
+        <div class="col-12 col-md-2">
+          <section id="nav_menu-6" class="widget widget_nav_menu">
+            <h3 class="widget-title dropdown-toggle collapsed">Sobre</h3>
+            <div class="menu-footer-1-container">
+              <ul id="menu-footer-1" class="menu list-unstyled text-small dropdown-menu-mobile" itemscope=""
+                itemtype="http://www.schema.org/SiteNavigationElement">
+                <li id="menu-item-3525" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3525">
+                  <a href="https://neogrid.com/quem-somos/">Quem somos</a></li>
+                <li id="menu-item-3530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3530">
+                  <a href="https://neogridcarreiras.gupy.io/">Trabalhe conosco</a></li>
+                <li id="menu-item-4593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4593">
+                  <a href="https://neogrid.com/relatorio-igualdade-salarial/">Relatório de
+                    Transparência e Igualdade Salarial</a></li>
+                <li id="menu-item-3528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3528">
+                  <a target="_blank" rel="noopener" href="https://ri.neogrid.com/">Relação com
+                    Investidores</a></li>
+                <li id="menu-item-4154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4154">
+                  <a href="https://neogrid.com/programa-neogrid-partner/">Seja um parceiro</a></li>
+                <li id="menu-item-3526" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3526">
+                  <a href="https://neogrid.com/noticia/">Notícias</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-12 col-md-2">
+          <section id="nav_menu-3" class="widget widget_nav_menu">
+            <h3 class="widget-title dropdown-toggle collapsed">Conteúdo</h3>
+            <div class="menu-footer-2-container">
+              <ul id="menu-footer-2" class="menu list-unstyled text-small dropdown-menu-mobile" itemscope=""
+                itemtype="http://www.schema.org/SiteNavigationElement">
+                <li id="menu-item-3531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3531">
+                  <a href="https://neogrid.com/blog/">Blog</a></li>
+                <li id="menu-item-4157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4157">
+                  <a href="https://neogrid.com/conteudo/">Guias</a></li>
+                <li id="menu-item-4156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4156">
+                  <a href="https://neogrid.com/cases/">Histórias de sucesso</a></li>
+                <li id="menu-item-3533" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3533">
+                  <a href="https://neogrid.com/podcasts/">Podcast</a></li>
+                <li id="menu-item-3532" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3532">
+                  <a href="https://neogrid.com/evento/">Eventos</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-12 col-md-2">
+          <section id="nav_menu-4" class="widget widget_nav_menu">
+            <h3 class="widget-title dropdown-toggle collapsed">Contatos</h3>
+            <div class="menu-footer-3-container">
+              <ul id="menu-footer-3" class="menu list-unstyled text-small dropdown-menu-mobile" itemscope=""
+                itemtype="http://www.schema.org/SiteNavigationElement">
+                <li id="menu-item-4537" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4537">
+                  <a href="https://neogrid.com/fale-com-um-especialista/">Fale com vendas</a></li>
+                <li id="menu-item-3537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3537">
+                  <a href="https://neogrid.com/suporte/">Suporte técnico</a></li>
+                <li id="menu-item-3538" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3538">
+                  <a href="https://neogrid.com/contato-financeiro/">Fale com financeiro</a></li>
+                <li id="menu-item-4159" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4159">
+                  <a href="https://neogrid.com/contato-juridico/">Fale com jurídico</a></li>
+                <li id="menu-item-3539" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3539">
+                  <a href="https://ri.neogrid.com/servicos-aos-investidores/fale-com-o-ri/">Fale com
+                    o RI</a></li>
+                <li id="menu-item-6938" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6938">
+                  <a href="https://neogrid.com/atendimento-ao-titular-de-dados-pessoais/">Atendimento
+                    ao titular de dados pessoais</a></li>
+                <li id="menu-item-4752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4752">
+                  <a href="https://neogrid.com/imprensa/">Imprensa</a></li>
+                <li id="menu-item-3540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3540">
+                  <a href="https://help.neogrid.com/pt-BR/ouvidoria">Ouvidoria</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-12 col-md-2">
+          <section id="nav_menu-5" class="widget widget_nav_menu">
+            <h3 class="widget-title dropdown-toggle collapsed">Legal</h3>
+            <div class="menu-footer-4-container">
+              <ul id="menu-footer-4" class="menu list-unstyled text-small dropdown-menu-mobile" itemscope=""
+                itemtype="http://www.schema.org/SiteNavigationElement">
+                <li id="menu-item-3543" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3543">
+                  <a target="_blank" rel="noopener" href="https://www.contatoseguro.com.br/pt/neogrid">Canal de
+                    ética</a></li>
+                <li id="menu-item-3546" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3546">
+                  <a href="https://neogrid.com/politica-de-cookies/">Política de cookies</a></li>
+                <li id="menu-item-3548" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3548">
+                  <a target="_blank" rel="noopener"
+                    href="https://www.neogrid.com/pdf/politica-de-gestao-portugues.pdf">Política de
+                    gestão</a></li>
+                <li id="menu-item-3547" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3547">
+                  <a href="https://neogrid.com/politica-de-privacidade/">Política de privacidade</a>
+                </li>
+                <li id="menu-item-3549" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3549">
+                  <a href="https://neogrid.com/termos-e-condicoes-de-uso/">Termos de uso</a></li>
+                <li id="menu-item-3551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3551">
+                  <a href="https://neogrid.com/politica-de-seguranca-da-informacao-para-terceiros/">Política
+                    de segurança da informação para terceiros</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-12 col-md-3">
+          <section id="block-10" class="widget widget_block">
+            <h5>Neogrid News</h5>
+            <script defer="" charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script defer=""
+              src="data:text/javascript;base64,CiAgaGJzcHQuZm9ybXMuY3JlYXRlKHsKICAgIHJlZ2lvbjogIm5hMSIsCiAgICBwb3J0YWxJZDogIjM5NTc0NjIxIiwKICAgIGZvcm1JZDogImM4NWUxNWM5LTQwNjktNDk5Yi04ZDViLWI5ZGU5MjIzYmRlOSIKICB9KTsK"
+              data-hubspot-rendered="true"></script>
+            <div id="hbspt-form-dc879cd5-000c-49d8-983b-4d27b688d796" class="hbspt-form" data-hs-forms-root="true">
+              <iframe id="hs-form-iframe-0" class="hs-form-iframe" title="Form 0" scrolling="no" width="100%"
+                style="position: static; border: none; display: block; overflow: hidden; width: 100%; height: 276px;"
+                height="276"></iframe></div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="footer-social"> <a href="https://www.linkedin.com/company/neogrid"> <i class="fa fa-linkedin"></i>
+            </a> <a href="https://www.instagram.com/neogrid"> <i class="fa fa-instagram"></i> </a> <a
+              href="https://www.youtube.com/user/neogridscm"> <i class="fa fa-youtube"></i> </a> <a
+              href="https://open.spotify.com/show/3xsJUpzGgqLLOFBrUnh3RT?si=Q_JczaArT3uhI-Xoe0XX6w"> <i
+                class="fa fa-spotify"></i> </a></div>
+          <div class="d-none d-md-block d-lg-block">
+            <section id="block-7" class="widget widget_block"><svg class="mt-4" width="196" height="51"
+                viewBox="0 0 196 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_3006_1260)">
+                  <path
+                    d="M96.6661 38.534C95.1239 38.534 93.7257 38.2701 92.4794 37.7424C91.2331 37.2147 90.1623 36.495 89.2833 35.5914C88.4044 34.6879 87.7253 33.6323 87.2459 32.4329C86.7664 31.2335 86.5267 29.9701 86.5267 28.6427C86.5267 27.2673 86.7584 25.9799 87.2219 24.7645C87.6853 23.549 88.3645 22.4855 89.2433 21.5659C90.1223 20.6463 91.1929 19.9187 92.4553 19.375C93.7177 18.8392 95.132 18.5674 96.6979 18.5674C98.2639 18.5674 99.6701 18.8393 100.901 19.375C102.139 19.9108 103.194 20.6385 104.057 21.542C104.928 22.4456 105.591 23.501 106.038 24.7005C106.494 25.9 106.717 27.1554 106.717 28.4508C106.717 28.7707 106.709 29.0746 106.701 29.3703C106.685 29.6662 106.662 29.906 106.614 30.1059H91.7362C91.8081 30.8656 91.9919 31.5373 92.2875 32.129C92.5831 32.7207 92.9586 33.2165 93.4301 33.6403C93.8935 34.0561 94.4209 34.3759 95.0121 34.5998C95.6033 34.8237 96.2106 34.9276 96.8497 34.9276C97.8325 34.9276 98.7514 34.6877 99.6223 34.2079C100.493 33.7282 101.084 33.0964 101.404 32.3128L105.631 33.4882C104.92 34.9595 103.785 36.1669 102.235 37.1105C100.669 38.062 98.8153 38.5338 96.666 38.5338L96.6661 38.534ZM101.66 26.9154C101.54 25.4681 101.005 24.3087 100.062 23.4371C99.1189 22.5655 97.9764 22.1337 96.6261 22.1337C95.9629 22.1337 95.3477 22.2536 94.7724 22.4855C94.1971 22.7174 93.6857 23.0452 93.2464 23.461C92.807 23.8768 92.4474 24.3806 92.1597 24.9723C91.8801 25.564 91.7123 26.2117 91.6643 26.9234H101.66V26.9154Z"
+                    fill="white"></path>
+                  <path
+                    d="M118.623 38.5339C117.057 38.5339 115.65 38.2621 114.396 37.7263C113.149 37.1906 112.087 36.4548 111.216 35.5354C110.345 34.6159 109.682 33.5522 109.21 32.3528C108.747 31.1534 108.515 29.89 108.515 28.5626C108.515 27.2112 108.747 25.9399 109.21 24.7404C109.674 23.5409 110.345 22.4775 111.216 21.5579C112.087 20.6383 113.141 19.9106 114.396 19.367C115.642 18.8312 117.057 18.5593 118.623 18.5593C120.189 18.5593 121.595 18.8313 122.825 19.367C124.064 19.9028 125.118 20.6384 125.981 21.5579C126.852 22.4775 127.515 23.541 127.987 24.7404C128.45 25.9398 128.682 27.2192 128.682 28.5626C128.682 29.89 128.45 31.1454 127.987 32.3528C127.523 33.5522 126.86 34.6158 126.005 35.5354C125.15 36.4549 124.096 37.1826 122.849 37.7263C121.595 38.262 120.189 38.5339 118.623 38.5339ZM113.589 28.5706C113.589 29.4261 113.717 30.2098 113.972 30.9054C114.228 31.601 114.587 32.2088 115.035 32.7286C115.49 33.2403 116.018 33.6401 116.633 33.92C117.248 34.1999 117.903 34.3438 118.614 34.3438C119.326 34.3438 119.989 34.1999 120.596 33.92C121.211 33.6401 121.739 33.2403 122.194 32.7286C122.649 32.2169 123.001 31.6011 123.257 30.8894C123.512 30.1778 123.64 29.394 123.64 28.5385C123.64 27.7069 123.512 26.9313 123.257 26.2196C123.001 25.5079 122.642 24.8922 122.194 24.3804C121.739 23.8687 121.211 23.4689 120.596 23.189C119.981 22.9091 119.326 22.7651 118.614 22.7651C117.903 22.7651 117.24 22.9091 116.633 23.2049C116.018 23.5007 115.49 23.9006 115.035 24.4203C114.58 24.932 114.228 25.5478 113.972 26.2594C113.717 26.9632 113.589 27.7387 113.589 28.5704V28.5706Z"
+                    fill="white"></path>
+                  <path
+                    d="M139.149 38.2779C137.846 38.2779 136.672 38.022 135.625 37.5023C134.571 36.9906 133.66 36.2868 132.885 35.3913C132.11 34.4957 131.519 33.4642 131.103 32.2807C130.688 31.1053 130.48 29.8578 130.48 28.5305C130.48 27.1312 130.704 25.8357 131.143 24.6363C131.583 23.4369 132.198 22.3814 132.981 21.4778C133.764 20.5743 134.707 19.8627 135.809 19.3428C136.912 18.8311 138.126 18.5671 139.445 18.5671C140.939 18.5671 142.249 18.9029 143.376 19.5747C144.502 20.2465 145.437 21.15 146.164 22.2774V18.895H150.463V37.2383C150.463 38.6616 150.191 39.9331 149.656 41.0605C149.12 42.188 148.377 43.1475 147.435 43.9312C146.492 44.7148 145.365 45.3144 144.055 45.7303C142.745 46.1462 141.314 46.3541 139.772 46.3541C137.663 46.3541 135.897 46.0022 134.467 45.3066C133.037 44.6109 131.806 43.6194 130.775 42.348L133.46 39.7412C134.195 40.6448 135.122 41.3565 136.233 41.8761C137.343 42.3878 138.526 42.6518 139.78 42.6518C140.539 42.6518 141.266 42.5479 141.969 42.3399C142.664 42.132 143.288 41.8042 143.823 41.3644C144.358 40.9247 144.782 40.3569 145.093 39.6692C145.397 38.9815 145.549 38.1739 145.549 37.2463V34.8234C144.91 35.9269 144.015 36.7744 142.864 37.3822C141.706 37.9738 140.467 38.2777 139.149 38.2777L139.149 38.2779ZM140.795 34.3438C141.33 34.3438 141.849 34.2558 142.337 34.0879C142.824 33.9199 143.28 33.6801 143.695 33.3922C144.111 33.0964 144.478 32.7525 144.798 32.3606C145.117 31.9688 145.357 31.553 145.533 31.1132V26.5154C145.093 25.3879 144.398 24.4843 143.456 23.7966C142.513 23.1089 141.53 22.7651 140.499 22.7651C139.74 22.7651 139.053 22.933 138.438 23.2608C137.823 23.5886 137.295 24.0365 136.856 24.5882C136.416 25.14 136.081 25.7717 135.849 26.4833C135.617 27.1949 135.498 27.9306 135.498 28.6902C135.498 29.4739 135.633 30.2095 135.905 30.8972C136.177 31.5849 136.544 32.1846 137.024 32.6963C137.503 33.208 138.054 33.6158 138.693 33.9118C139.341 34.1917 140.036 34.3436 140.795 34.3436V34.3438Z"
+                    fill="white"></path>
+                  <path
+                    d="M165.124 23.1652C163.63 23.1892 162.296 23.4771 161.121 24.0289C159.947 24.5806 159.1 25.4043 158.588 26.5077V38.1663H153.658V18.9034H158.181V23.0214C158.524 22.3577 158.924 21.766 159.395 21.2383C159.859 20.7106 160.362 20.2548 160.905 19.8629C161.441 19.471 161.992 19.1672 162.543 18.9593C163.095 18.7515 163.63 18.6475 164.141 18.6475C164.413 18.6475 164.613 18.6475 164.749 18.6475C164.884 18.6475 165.012 18.6635 165.132 18.6874V23.1652H165.124Z"
+                    fill="white"></path>
+                  <path
+                    d="M167.529 38.1659V18.903H172.451V38.1659H167.529ZM172.818 14.609C172.818 16.1763 171.548 17.4396 169.99 17.4396C168.424 17.4396 167.161 16.1682 167.161 14.609C167.161 13.0498 168.432 11.7783 169.99 11.7783C171.556 11.7783 172.818 13.0497 172.818 14.609Z"
+                    fill="white"></path>
+                  <path
+                    d="M183.98 38.5339C182.654 38.5339 181.432 38.278 180.305 37.7582C179.178 37.2465 178.211 36.5348 177.405 35.6233C176.598 34.7197 175.966 33.6562 175.511 32.4408C175.056 31.2253 174.832 29.9219 174.832 28.5226C174.832 27.1233 175.048 25.8279 175.471 24.6285C175.903 23.4291 176.494 22.3735 177.253 21.47C178.012 20.5664 178.915 19.8548 179.969 19.3349C181.024 18.8233 182.175 18.5593 183.421 18.5593C184.843 18.5593 186.122 18.9031 187.264 19.5908C188.407 20.2785 189.294 21.174 189.925 22.2775V12.1462H194.847V32.5046C194.847 33.0163 194.935 33.3842 195.102 33.6081C195.27 33.832 195.566 33.9519 195.981 33.9758V38.1659C195.126 38.3338 194.423 38.4218 193.888 38.4218C193.009 38.4218 192.282 38.1979 191.723 37.7581C191.155 37.3183 190.844 36.7426 190.764 36.031L190.652 34.8155C189.941 36.0389 188.982 36.9665 187.768 37.5903C186.569 38.222 185.299 38.5339 183.98 38.5339ZM185.267 34.3438C185.73 34.3438 186.21 34.2638 186.697 34.1038C187.184 33.9439 187.64 33.72 188.055 33.4241C188.471 33.1283 188.846 32.7844 189.174 32.3925C189.501 32.0007 189.757 31.5689 189.925 31.1051V26.5072C189.725 25.9715 189.454 25.4757 189.102 25.02C188.75 24.5642 188.343 24.1723 187.888 23.8446C187.432 23.5166 186.961 23.2528 186.457 23.053C185.954 22.861 185.459 22.7571 184.971 22.7571C184.236 22.7571 183.557 22.9171 182.934 23.2368C182.311 23.5566 181.775 23.9885 181.336 24.5402C180.896 25.092 180.553 25.7237 180.305 26.4354C180.057 27.1471 179.938 27.8827 179.938 28.6423C179.938 29.45 180.073 30.2016 180.345 30.8814C180.617 31.5691 180.984 32.1688 181.448 32.6805C181.911 33.1922 182.47 33.6 183.117 33.8959C183.765 34.1918 184.476 34.3437 185.267 34.3437V34.3438Z"
+                    fill="white"></path>
+                  <path
+                    d="M79.1121 12.7461V29.5862L65.689 12.7461H61.4464V38.2461H66.7838V21.8299L79.7196 38.2461H84.0502V12.7461H79.1121Z"
+                    fill="white"></path>
+                  <path
+                    d="M40.7523 7.38862L38.7868 6.25317C35.7506 13.3219 31.6198 19.8067 26.6021 25.5001C31.6197 31.1854 35.7506 37.6783 38.7868 44.747L40.7523 43.6116C45.2746 40.9968 48.0631 36.1671 48.0631 30.9375V20.0626C48.071 14.8331 45.2826 10.0034 40.7523 7.38862Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.8"
+                    d="M16.7665 34.7596C20.8733 39.4854 24.2371 44.8829 26.674 50.7601C28.296 50.4642 29.886 49.8964 31.356 49.0408L38.7947 44.7389C35.7585 37.6702 31.6278 31.1853 26.61 25.4919C23.6218 28.8823 20.3299 31.9849 16.7664 34.7596H16.7665Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.6"
+                    d="M5.20496 42.1082C5.86017 42.6599 6.56326 43.1636 7.32228 43.6035L16.7265 49.0329C19.7787 50.8001 23.3102 51.3677 26.666 50.7522C24.2291 44.8749 20.8733 39.4854 16.7584 34.7517C13.1709 37.5584 9.29579 40.0212 5.20496 42.1083V42.1082Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.8"
+                    d="M26.61 25.5C31.6277 19.8147 35.7585 13.3218 38.7947 6.25311L31.3561 1.95118C29.8779 1.1036 28.296 0.53583 26.666 0.23999C24.229 6.11724 20.8732 11.5067 16.7584 16.2404C20.3299 19.0152 23.6218 22.1177 26.61 25.5Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.6"
+                    d="M26.666 0.239966C23.3022 -0.375719 19.7707 0.191954 16.7265 1.95912L7.32228 7.38863C6.56326 7.82841 5.86007 8.33213 5.20496 8.88387C9.29589 10.9709 13.1709 13.4337 16.7664 16.2324C20.8733 11.5066 24.237 6.11722 26.666 0.239966Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.6"
+                    d="M16.7665 16.2405C13.7543 19.7109 10.3346 22.8214 6.59521 25.5001C10.3426 28.1788 13.7542 31.2894 16.7665 34.7597C20.33 31.9849 23.6219 28.8824 26.6102 25.5001C23.6219 22.1176 20.33 19.0151 16.7665 16.2405Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.4"
+                    d="M6.58721 25.5C4.49386 26.9953 2.29661 28.3627 0.0114746 29.578V30.9294C0.0114746 35.2793 1.94507 39.3575 5.20492 42.1082C9.29585 40.0212 13.1709 37.5583 16.7665 34.7596C13.7543 31.2892 10.3346 28.1787 6.58721 25.5Z"
+                    fill="#F0000B"></path>
+                  <path opacity="0.4"
+                    d="M16.7665 16.2403C13.171 13.4417 9.30383 10.9788 5.20504 8.89185C1.94519 11.6426 0.0115967 15.7126 0.0115967 20.0626V21.4139C2.29673 22.6294 4.49399 23.9967 6.58733 25.5C10.3347 22.8213 13.7543 19.7028 16.7666 16.2404L16.7665 16.2403Z"
+                    fill="#F0000B"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_3006_1260">
+                    <rect width="196" height="51" fill="white"></rect>
+                  </clipPath>
+                </defs>
+              </svg> <small class="d-block mb-3 text-muted mt-3">A Neogrid é uma multinacional referência
+                em soluções
+                inteligentes para a gestão da cadeia de suprimentos.</small></section> <small> © 2025
+              Neogrid — Todos os direitos reservados</small>
+          </div>
+        </div>
+        <section id="block-8" class="d-flex align-items-end bd-highlight mb-3 widget_block">
+          <div class="p-2 bd-highlight"> <a href="https://arker.com.br/" target="_blank"> <img decoding="async"
+                src="https://neogrid.com/wp-content/themes/neogrid/img/footer/1.png" alt="ARKER"> </a></div>
+          <div class="p-2 bd-highlight"> <a href="https://www.ehorus.com.br/" target="_blank"> <img decoding="async"
+                src="https://neogrid.com/wp-content/themes/neogrid/img/footer/2.png" alt="HORUS"> </a></div>
+          <div class="p-2 bd-highlight"> <a href="https://lett.digital/" target="_blank"> <img decoding="async"
+                src="https://neogrid.com/wp-content/themes/neogrid/img/footer/3.png" alt="LETT"> </a></div>
+          <div class="p-2 bd-highlight"> <a href="https://predify.me/" target="_blank"> <img decoding="async"
+                src="https://neogrid.com/wp-content/themes/neogrid/img/footer/4.png" alt="PREDIFY"> </a>
+          </div>
+          <div class="p-2 bd-highlight"> <a href="https://smarket.com.br/" target="_blank"> <img decoding="async"
+                src="https://neogrid.com/wp-content/themes/neogrid/img/footer/5.png" alt="SMARKET"> </a></div>
+        </section>
+      </div>
+    </div>
   </footer>
+  <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/39574621.js"></script>
+  <script defer="" src="https://www.googletagmanager.com/gtag/js?id=G-K6YX3TVRXD"></script>
+  <script defer=""
+    src="data:text/javascript;base64,CiAgd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107CiAgZnVuY3Rpb24gZ3RhZygpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyk7fQogIGd0YWcoJ2pzJywgbmV3IERhdGUoKSk7CgogIGd0YWcoJ2NvbmZpZycsICdHLUs2WVgzVFZSWEQnKTsK"></script>
+  <script defer=""
+    src="data:text/javascript;base64,CiAgICAoZnVuY3Rpb24oaCxvLHQsaixhLHIpewogICAgICAgIGguaGo9aC5oanx8ZnVuY3Rpb24oKXsoaC5oai5xPWguaGoucXx8W10pLnB1c2goYXJndW1lbnRzKX07CiAgICAgICAgaC5faGpTZXR0aW5ncz17aGppZDozODE0NzU4LGhqc3Y6Nn07CiAgICAgICAgYT1vLmdldEVsZW1lbnRzQnlUYWdOYW1lKCdoZWFkJylbMF07CiAgICAgICAgcj1vLmNyZWF0ZUVsZW1lbnQoJ3NjcmlwdCcpO3IuYXN5bmM9MTsKICAgICAgICByLnNyYz10K2guX2hqU2V0dGluZ3MuaGppZCtqK2guX2hqU2V0dGluZ3MuaGpzdjsKICAgICAgICBhLmFwcGVuZENoaWxkKHIpOwogICAgfSkod2luZG93LGRvY3VtZW50LCdodHRwczovL3N0YXRpYy5ob3RqYXIuY29tL2MvaG90amFyLScsJy5qcz9zdj0nKTsK"></script>
+  <script defer=""
+    src="data:text/javascript;base64,KGZ1bmN0aW9uKHcsZCxzLGwsaSl7d1tsXT13W2xdfHxbXTt3W2xdLnB1c2goeydndG0uc3RhcnQnOgpuZXcgRGF0ZSgpLmdldFRpbWUoKSxldmVudDonZ3RtLmpzJ30pO3ZhciBmPWQuZ2V0RWxlbWVudHNCeVRhZ05hbWUocylbMF0sCmo9ZC5jcmVhdGVFbGVtZW50KHMpLGRsPWwhPSdkYXRhTGF5ZXInPycmbD0nK2w6Jyc7ai5hc3luYz10cnVlO2ouc3JjPQonaHR0cHM6Ly93d3cuZ29vZ2xldGFnbWFuYWdlci5jb20vZ3RtLmpzP2lkPScraStkbDtmLnBhcmVudE5vZGUuaW5zZXJ0QmVmb3JlKGosZik7Cn0pKHdpbmRvdyxkb2N1bWVudCwnc2NyaXB0JywnZGF0YUxheWVyJywnR1RNLTVXUEdENicpOw=="></script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WPGD6" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <script defer=""
+    src="data:text/javascript;base64,CmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBmdW5jdGlvbigpIHsKICAgIHZhciBib2R5Q2xhc3NlcyA9IGRvY3VtZW50LmJvZHkuY2xhc3NOYW1lOwogICAgdmFyIGxhbmd1YWdlQ2xhc3NQcmVmaXggPSAnbGFuZy0nOwogICAgdmFyIGFjdGl2ZUxhbmd1YWdlID0gYm9keUNsYXNzZXMuc3BsaXQoJyAnKS5maW5kKGZ1bmN0aW9uKGNsYXNzTmFtZSkgewogICAgICAgIHJldHVybiBjbGFzc05hbWUuc3RhcnRzV2l0aChsYW5ndWFnZUNsYXNzUHJlZml4KTsKICAgIH0pOwoKICAgIGlmIChhY3RpdmVMYW5ndWFnZSkgewogICAgICAgIHZhciBsYW5ndWFnZUNvZGUgPSBhY3RpdmVMYW5ndWFnZS5yZXBsYWNlKGxhbmd1YWdlQ2xhc3NQcmVmaXgsICcnKTsKICAgICAgICB2YXIgbGFuZ3VhZ2VTZWxlY3RvcnMgPSB7CiAgICAgICAgICAgICdwdCc6ICdodHRwczovL25lb2dyaWQuY29tLycsCiAgICAgICAgICAgICdlbic6ICdodHRwczovL25lb2dyaWQuY29tL2VuLycsCiAgICAgICAgICAgICdlcyc6ICdodHRwczovL25lb2dyaWQuY29tL2VzLycKICAgICAgICB9OwoKICAgICAgICB2YXIgYWN0aXZlVXJsID0gbGFuZ3VhZ2VTZWxlY3RvcnNbbGFuZ3VhZ2VDb2RlXTsKICAgICAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuZ2xvYmUtZGVza3RvcCAuZHJvcGRvd24taXRlbSwgLmdsb2JlIC5uYXYtbGluaycpLmZvckVhY2goZnVuY3Rpb24obGluaykgewogICAgICAgICAgICBsaW5rLmNsYXNzTGlzdC5yZW1vdmUoJ2FjdGl2ZScpOwogICAgICAgIH0pOwoKICAgICAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGAuZ2xvYmUtZGVza3RvcCAuZHJvcGRvd24taXRlbVtocmVmPSIke2FjdGl2ZVVybH0iXSwgLmdsb2JlIC5uYXYtbGlua1tocmVmPSIke2FjdGl2ZVVybH0iXWApLmZvckVhY2goZnVuY3Rpb24obGluaykgewogICAgICAgICAgICBsaW5rLmNsYXNzTGlzdC5hZGQoJ2FjdGl2ZScpOwogICAgICAgIH0pOwogICAgfQp9KTsKCiAg"></script>
+  <script defer=""
+    src="data:text/javascript;base64,CmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBmdW5jdGlvbiAoKSB7CiAgY29uc3QgaW1nQ29udGFpbmVycyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5vdmVyZmxvdy1hdXRvJyk7CgogIGltZ0NvbnRhaW5lcnMuZm9yRWFjaChpbWdDb250YWluZXIgPT4gewogICAgICBsZXQgaXNEcmFnZ2luZyA9IGZhbHNlOwogICAgICBsZXQgc3RhcnRYOwogICAgICBsZXQgc2Nyb2xsTGVmdDsKICAgICAgaW1nQ29udGFpbmVyLmFkZEV2ZW50TGlzdGVuZXIoJ3RvdWNoc3RhcnQnLCAoZSkgPT4gewogICAgICAgICAgaXNEcmFnZ2luZyA9IHRydWU7CiAgICAgICAgICBzdGFydFggPSBlLnRvdWNoZXNbMF0ucGFnZVggLSBpbWdDb250YWluZXIub2Zmc2V0TGVmdDsKICAgICAgICAgIHNjcm9sbExlZnQgPSBpbWdDb250YWluZXIuc2Nyb2xsTGVmdDsKICAgICAgfSk7CgogICAgICBpbWdDb250YWluZXIuYWRkRXZlbnRMaXN0ZW5lcigndG91Y2hlbmQnLCAoKSA9PiB7CiAgICAgICAgICBpc0RyYWdnaW5nID0gZmFsc2U7CiAgICAgIH0pOwoKICAgICAgaW1nQ29udGFpbmVyLmFkZEV2ZW50TGlzdGVuZXIoJ3RvdWNobW92ZScsIChlKSA9PiB7CiAgICAgICAgICBpZiAoIWlzRHJhZ2dpbmcpIHJldHVybjsKICAgICAgICAgIGNvbnN0IHggPSBlLnRvdWNoZXNbMF0ucGFnZVggLSBpbWdDb250YWluZXIub2Zmc2V0TGVmdDsKICAgICAgICAgIGNvbnN0IHdhbGsgPSAoeCAtIHN0YXJ0WCkgKiAyOyAKICAgICAgICAgIGltZ0NvbnRhaW5lci5zY3JvbGxMZWZ0ID0gc2Nyb2xsTGVmdCAtIHdhbGs7CiAgICAgIH0pOwogIH0pOwp9KTsKCg=="></script>
+  <script defer="" type="text/javascript" src="https://neogrid.com/wp-content/themes/neogrid/js/jquery.slim.min.js"
+    id="jquery-slim-js"></script>
+  <script defer="" type="text/javascript" src="https://neogrid.com/wp-content/themes/neogrid/js/popper.min.js"
+    id="popper-js"></script>
+  <script defer="" type="text/javascript" src="https://neogrid.com/wp-content/themes/neogrid/js/bootstrap.min.js"
+    id="bootstrap-js-js"></script>
+  <script defer="" type="text/javascript"
+    src="https://neogrid.com/wp-content/cache/autoptimize/1/js/autoptimize_single_99cf8430b8d81c268269760118ec31a4.js"
+    id="slick-js-js"></script>
+  <script defer="" type="text/javascript"
+    src="https://neogrid.com/wp-content/cache/autoptimize/1/js/autoptimize_single_a791826463aac974c2d0e3c38d22f2eb.js"
+    id="script-js-js"></script>
+  <div class="modal fade modal-search" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Faça a sua pesquisa</h5> <button type="button" class="close"
+            data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form role="search" method="get" id="searchform" action="https://neogrid.com/" data-hs-cf-bound="true"> <input
+              type="text" value="" name="s" id="s" class="form-control" placeholder="Faça a sua pesquisa"> <input
+              type="submit" id="searchsubmit" value="Pesquisar" class="btn btn-primary btn-red"></form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade product-m" id="prodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span> </button>
+          <div class="embed-responsive embed-responsive-16by9"> <iframe class="embed-responsive-item" src="" id="video"
+              allowscriptaccess="always" allow="autoplay"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div><iframe name="__uspapiLocator" tabindex="-1" role="presentation" aria-hidden="true" title="Blank"
+    style="display: none; position: absolute; width: 1px; height: 1px; top: -9999px;"></iframe><iframe tabindex="-1"
+    role="presentation" aria-hidden="true" title="Blank" src="https://consentcdn.cookiebot.com/sdk/bc-v4.min.html"
+    style="position: absolute; width: 1px; height: 1px; top: -9999px;"></iframe>
 
-  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
-    <title>Gray Clouds Background</title>
-    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
-  </svg>
+  <iframe owner="archetype" title="archetype" style="display: none; visibility: hidden;"></iframe><img
+    id="CookiebotSessionPixel" src="https://imgsct.cookiebot.com/1.gif?dgi=668ea738-1fbe-4240-817a-7d1071e47e48"
+    alt="Cookiebot session tracker icon loaded" data-cookieconsent="ignore" style="display: none;">
+</body>
 
-</div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<router-outlet></router-outlet>
+</html>
