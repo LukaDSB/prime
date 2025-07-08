@@ -1,14 +1,14 @@
 .navbar-container {
-  background-color: lightblue;
-  height: 7vh;
+  background-color: transparent;
+  height: 10vh;
   display: flex;
   justify-items: center;
+  //background-color: lightcyan;
 }
 
 .inner-content{
   display: flex;
   flex-direction: row;
-  background-color: lightcoral;
   margin: auto;
   width: 70%;
   justify-content: space-evenly;
@@ -41,7 +41,6 @@
     position: absolute;
     background-color: white;
     color: #000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-width: 160px;
     padding: 0.5rem 0;
     z-index: 100;
@@ -61,4 +60,8 @@
   &:hover .dropdown-menu {
     display: block;
   }
+}
+
+.navbar-right > a{
+  color: white;
 }

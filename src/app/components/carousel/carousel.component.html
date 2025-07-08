@@ -1,0 +1,30 @@
+<div class="carousel-container">
+  <div
+    *ngFor="let slide of slides; let i = index"
+    class="slide"
+    [class.active]="i === currentSlide"
+  >
+    <div class="text-content">
+      <h2>{{ slide.title }}</h2>
+      <p>{{ slide.subtitle }}</p>
+      <div class="buttom">
+        <button>Baixar estudo</button>
+      </div>
+    </div>
+
+    <div class="image-content">
+      <img [src]="slide.imageUrl" [alt]="slide.title" />
+    </div>
+
+
+  </div>
+
+  <div class="dots-container">
+    <span
+      *ngFor="let slide of slides; let i = index"
+      class="dot"
+      [class.active]="i === currentSlide"
+      (click)="selectSlide(i)"
+    ></span>
+  </div>
+</div>

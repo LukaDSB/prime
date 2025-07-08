@@ -1,6 +1,6 @@
 .carrossel-container {
   overflow: hidden;
-  width: 50vw;
+  width: 100%;
   background-color: #fff;
   padding: 1rem 0;
   align-self: center;
@@ -9,6 +9,7 @@
 
 .carrossel-track {
   display: flex;
+  justify-content: space-evenly;
   gap: 2rem;
   padding: 1rem;
   cursor: grab;

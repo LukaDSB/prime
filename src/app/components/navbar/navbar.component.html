@@ -3,13 +3,12 @@
 
     <div class="navbar-left">
       <a href="https://exemplo.com/home" target="_blank" rel="noopener noreferrer">
-        <img [src]="logoUrl" alt="Logo da Empresa" class="navbar-logo">
+        <img src="../../../assets/neogrid.svg">
       </a>
 
       <div class="dropdown" *ngFor="let menu of dropdowns">
         <button class="dropdown-toggle">
           {{ menu.title }}
-          <span class="arrow">&#9662;</span>
         </button>
         <div class="dropdown-menu">
           <a *ngFor="let item of menu.items" href="#">{{ item }}</a>
@@ -19,7 +18,10 @@
 
     <div class="navbar-right">
       <a href="https://exemplo.com/vendas" target="_blank" rel="noopener noreferrer" class="btn btn-sales">
-        Fale conosco
+        Fale com vendas
+      </a>
+      <a href="https://exemplo.com/vendas" target="_blank" rel="noopener noreferrer" class="btn btn-sales">
+        Login
       </a>
     </div>
 

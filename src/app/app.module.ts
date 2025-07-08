@@ -8,6 +8,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ServicosComponent } from './components/servicos/servicos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MarcasComponent,
     BannerComponent,
     ServicosComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,

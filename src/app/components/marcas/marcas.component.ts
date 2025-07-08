@@ -22,7 +22,15 @@ export class MarcasComponent implements AfterViewInit {
     'https://neogrid.com/wp-content/uploads/2024/05/pepsico.png',
     'https://neogrid.com/wp-content/uploads/2024/05/coca-cola.png',
     'https://neogrid.com/wp-content/uploads/2024/05/johnson-e-johnson.png',
-    // ...adicione mais imagens conforme necessário
+    'https://neogrid.com/wp-content/uploads/2024/05/brf.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/wickbold.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/mateus.png',
+    'https://neogrid.com/wp-content/uploads/2024/03/71650e09-d391-8735-fd3b-e3d25c812ded.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/seara.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/gpa.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/pepsico.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/coca-cola.png',
+    'https://neogrid.com/wp-content/uploads/2024/05/johnson-e-johnson.png',
   ];
 
   ngAfterViewInit() {
