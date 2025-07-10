@@ -1,0 +1,27 @@
+.section{
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  padding: 10;
+  width: 100%;
+  justify-content: center;
+}
+
+.text-container{
+  background-color: lightpink;
+  width: 30vw;
+  height: auto;
+  align-self: center;
+}
+
+.botao{
+  display: inline-block;
+  background-color: #ff0000; /* Cor vermelha */
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
