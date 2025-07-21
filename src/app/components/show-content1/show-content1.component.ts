@@ -32,45 +32,28 @@ export class ShowContent1Component {
   ];
 
   currentSlide: number = 0;
-
-  // Variável para guardar a referência do intervalo do timer
   private slideInterval: any;
 
-  // Hook que é executado quando o componente é inicializado
   ngOnInit(): void {
     this.startAutoSlide();
   }
 
-  // Hook que é executado quando o componente é destruído
-  // É crucial para limpar o intervalo e evitar vazamentos de memória
   ngOnDestroy(): void {
     clearInterval(this.slideInterval);
   }
 
-  /**
-   * Inicia a transição automática dos slides a cada 5 segundos.
-   */
   private startAutoSlide(): void {
     this.slideInterval = setInterval(() => {
       this.nextSlide();
-    }, 5000); // Muda de slide a cada 5 segundos
+    }, 5000);
   }
 
-  /**
-   * Avança para o próximo slide.
-   */
   private nextSlide(): void {
-    // A mágica do operador de módulo (%) faz o carrossel voltar ao início
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
   }
 
-  /**
-   * Seleciona um slide específico ao clicar em um dos indicadores (dots).
-   * @param index O índice do slide a ser exibido.
-   */
   selectSlide(index: number): void {
     this.currentSlide = index;
-    // Reinicia o timer para que o usuário tenha tempo de ver o slide que escolheu
     clearInterval(this.slideInterval);
     this.startAutoSlide();
   }

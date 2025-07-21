@@ -1,170 +1,191 @@
 .servicos {
-  padding: 60px 0;
-  background-color: #f8f8f8; /* Cor de fundo semelhante à imagem */
+ padding: 60px 0;
+ background-color: #fff;
 }
 
 .servicos .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 15px;
 }
 
 .servicos .conteudo {
-  display: flex;
-  flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
-  gap: 30px; /* Espaçamento entre as colunas */
+ display: flex;
+ flex-wrap: wrap;
+ gap: 30px;
+ align-items: center; /* Alinha os itens verticalmente no centro */
 }
 
 .servicos .texto {
-  flex: 1; /* Ocupa o espaço restante */
-  min-width: 300px; /* Largura mínima para o bloco de texto */
+ flex: 1;
+ min-width: 300px;
 }
 
 .servicos .subtitulo {
-  font-size: 1.1em;
-  color: #007bff; /* Cor azul */
-  margin-bottom: 10px;
+ font-size: 1.1em;
+ color: #007bff;
+ margin-bottom: 10px;
 }
 
 .servicos .titulo {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 20px;
+ font-size: 2.5em;
+ color: #333;
+ margin-bottom: 20px;
 }
 
 .servicos .descricao-desktop {
-  font-size: 1.1em;
-  color: #666;
-  margin-bottom: 30px;
-  /* Ocultar em mobile se houver uma versão separada */
+ font-size: 1.1em;
+ color: #666;
+ margin-bottom: 30px;
 }
 
 .servicos .botao {
-  display: inline-block;
-  background-color: #ff0000; /* Cor vermelha */
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+ display: inline-block;
+ background-color: #ff0000;
+ color: #fff;
+ padding: 12px 25px;
+ border-radius: 5px;
+ text-decoration: none;
+ font-weight: bold;
+ transition: background-color 0.3s ease;
 }
 
 .servicos .botao:hover {
-  background-color: #cc0000;
+ background-color: #cc0000;
 }
 
 .servicos .icones {
-  flex: 2; /* Ocupa mais espaço que o texto */
-  display: flex;
-  flex-direction: row;
-  gap: 10px; /* Espaçamento entre os ícones */
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ flex: 2;
+ display: flex;
+ flex-direction: row;
+ gap: 10px;
+ background-color: #fff;
+ padding: 15px;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .servicos .icone-item {
-  position: relative; /* Para posicionar o card-hover */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  /* ALTERAÇÕES APLICADAS AQUI: */
-  padding-bottom: 80px; /* Ajuste este valor conforme a altura do seu dropdown */
-  margin-bottom: 0; /* Garante que não haja margem inferior interferindo */
+ position: relative; 
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 20px;
+ border-radius: 8px;
+ text-align: center;
+ cursor: pointer;
+ transition: background-color 0.3s ease, box-shadow 0.3s ease;
+ padding-bottom: 80px; 
+ margin-bottom: 0; 
 }
 
 .servicos .icone-item:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ background-color: #f0f0f0;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .servicos .icone {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
+ width: 100px;
+ height: 100px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 15px;
 }
 
 .servicos .icone img {
-  max-width: 100%;
-  max-height: 100%;
+ max-width: 100%;
+ max-height: 100%;
 }
 
 .servicos .icone-item p {
-  font-weight: bold;
-  color: #333;
-  margin-top: 10px;
+ font-weight: bold;
+ color: #333;
+ margin-top: 10px;
 }
 
+/* ======================================================= */
+/* ESTA É A SEÇÃO CORRIGIDA                                */
+/* ======================================================= */
 .servicos .card-hover {
-  display: none; /* Esconde o dropdown por padrão */
-  position: absolute;
-  top: 70%; /* Posiciona abaixo do item do ícone */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translateX(-50%); /* Ajusta para centralizar */
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
-  min-width: 200px;
-  text-align: left;
-  white-space: nowrap; /* Evita que os links quebrem a linha */
-  /* ALTERAÇÕES APLICADAS AQUI: */
-  margin-top: 5px; /* Adiciona um pequeno espaço entre o item e o dropdown */
+ display: none; 
+ position: absolute;
+ top: 70%; 
+ left: 50%; 
+ transform: translateX(-50%); 
+ background-color: #fff;
+ border-radius: 8px;
+ box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+ padding: 15px;
+ z-index: 1000; 
+ width: 250px; /* Define uma largura fixa para o card */
+ text-align: justify;
+ white-space: normal; /* Permite a quebra de linha */
+ margin-top: 5px; 
+ text-indent: 15px;
 }
+/* ======================================================= */
 
 .servicos .icone-item:hover .card-hover {
-  display: block; /* Mostra o dropdown ao passar o mouse */
+ display: block; 
 }
 
 .servicos .card-hover a {
-  display: block;
-  padding: 8px 0;
-  color: #555;
-  text-decoration: none;
-  transition: color 0.2s ease;
+ display: block;
+ padding: 8px 0;
+ color: #555;
+ text-decoration: none;
+ transition: color 0.2s ease;
 }
 
 .servicos .card-hover a:hover {
-  color: #007bff; /* Cor azul ao passar o mouse sobre o link */
+ color: #007bff; 
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+
+/* --- REGRAS PARA TELAS MENORES --- */
+
+/* Para telas menores que 1220px */
+@media (max-width: 1220px) {
+  /* 1. Empilha o texto e os ícones verticalmente */
   .servicos .conteudo {
     flex-direction: column;
     text-align: center;
   }
-
-  .servicos .descricao-mobile {
-    display: block; /* Mostra a descrição para mobile */
-    font-size: 1.1em;
-    color: #666;
-    margin-bottom: 30px;
-  }
-
-  .servicos .descricao-desktop {
-    display: none; /* Oculta a descrição para desktop em mobile */
-  }
-
+  
   .servicos .icones {
-    grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%; /* Faz a caixa de ícones ocupar mais espaço */
+    max-width: 600px; /* Define uma largura máxima para a grade */
   }
 
-  .servicos .icone-item .card-hover {
-    left: 0;
-    right: 0;
-    transform: none; /* Remove a centralização para ocupar a largura total */
-    min-width: unset; /* Remove largura mínima */
+  .servicos .icone-item {
+    flex-basis: calc(50% - 10px); 
+    flex-grow: 0;
   }
+}
+
+@media (max-width: 768px) {
+ .servicos .conteudo {
+  text-align: center;
+ }
+
+ .servicos .descricao-mobile {
+  display: block; 
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 30px;
+ }
+
+ .servicos .descricao-desktop {
+  display: none; 
+ }
+
+ .servicos .icone-item .card-hover {
+  left: 0;
+  right: 0;
+  transform: none; 
+  min-width: unset; 
+ }
 }

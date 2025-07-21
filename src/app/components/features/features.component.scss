@@ -1,0 +1,58 @@
+/* Estilos para o container principal */
+.features-container {
+  display: flex; /* Usa Flexbox para alinhar os itens */
+  justify-content: space-around; /* Distribui os itens igualmente com espaço ao redor */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+  gap: 2rem; /* Espaçamento entre os cards */
+  padding: 2rem 1rem; /* Preenchimento interno (vertical e horizontal) */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: auto;
+  width: 80%;
+}
+
+/* Estilos para cada card individual */
+.feature-card {
+  display: flex;
+  flex-direction: column; /* Organiza o conteúdo do card em uma coluna (ícone, título, texto) */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto */
+  flex-basis: 280px; /* Define uma largura base para cada card */
+  max-width: 300px; /* Largura máxima para cada card */
+}
+
+/* Estilos para o ícone/imagem */
+.feature-icon {
+  width: 100px; /* Largura fixa para o ícone */
+  height: 100px; /* Altura fixa para o ícone */
+  object-fit: contain; /* Garante que a imagem se ajuste sem distorcer */
+  margin-bottom: 1.5rem; /* Espaço abaixo do ícone */
+}
+
+/* Estilos para o título */
+.feature-title {
+  color: #0d4a8f; /* Cor azul escura para o título, extraída da imagem */
+  text-transform: uppercase; /* Transforma o texto para maiúsculas */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: bold; /* Deixa o texto em negrito */
+  margin: 0 0 0.75rem 0; /* Remove margem padrão e adiciona espaço abaixo */
+}
+
+/* Estilos para o parágrafo de descrição */
+.feature-description {
+  color: #4a4a4a; /* Cor cinza escura para o texto */
+  font-size: 0.9rem; /* Tamanho da fonte ligeiramente menor */
+  line-height: 1.6; /* Altura da linha para melhor legibilidade */
+  margin: 0; /* Remove margens padrão */
+}
+
+/* Media Query para responsividade em telas pequenas (ex: celulares) */
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column; /* Muda a direção do flex para coluna */
+    align-items: center; /* Centraliza os cards no container */
+  }
+
+  .feature-card {
+    flex-basis: 100%; /* Permite que o card ocupe a largura total */
+  }
+}

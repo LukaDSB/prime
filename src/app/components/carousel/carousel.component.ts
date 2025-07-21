@@ -17,19 +17,19 @@ export class CarouselComponent implements OnInit, OnDestroy {
   // Array com os dados dos 3 slides
   slides: Slide[] = [
     {
-      title: 'Slide 3: Arquitetura',
-      subtitle: 'Construções que desafiam a gravidade.',
+      title: 'Neogrid',
+      subtitle: 'Soluções para gestão',
       imageUrl: 'https://neogrid.com/wp-content/uploads/2025/07/neogrid_estudo-de-consumo-do-shopper_chocolate_mockup-2.png'
     },
     {
       title: 'Slide 1: Natureza',
       subtitle: 'Descubra paisagens incríveis.',
-      imageUrl: 'https://neogrid.com/wp-content/uploads/2025/04/Neogrid-Awards-Logo.png' // Imagem de um serviço de placeholder
+      imageUrl: 'https://neogrid.com/wp-content/uploads/2024/04/tablet-2.webp'
     },
     {
       title: 'Slide 2: Tecnologia',
       subtitle: 'Explore o futuro da inovação.',
-      imageUrl: 'https://neogrid.com/wp-content/uploads/2024/04/tablet-2.webp'
+      imageUrl: 'https://neogrid.com/wp-content/uploads/2025/04/Neogrid-Awards-Logo.png'
     }
   ];
 

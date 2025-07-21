@@ -1,0 +1,29 @@
+<div class="carousel-wrapper">
+  <!-- <button class="nav-button left" (click)="scrollLeft()">‹</button> -->
+
+  <div #carousel class="carousel-container">
+    <div class="card" *ngFor="let card of cards">
+
+      <div class="card-cabecalho">
+        <img src="https://neogrid.com/wp-content/uploads/2024/03/Adcos-60x60.webp" alt="">
+        <!-- <a>Leia a história →</a> -->
+      </div>
+
+      <div class="card-conteudo">
+        <h2> {{ card.titulo ? card.titulo : 'Titulo do card' }} </h2>
+        <p> {{ card.descricao ? card.descricao : 'Descrição do card' }} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-2"></div>
+
+  <div class="carousel-indicators">
+    <span *ngFor="let card of cards; let i = index"
+      [class.active]="i === activeIndex"
+      (click)="scrollToCard(i)">
+    </span>
+  </div>
+
+  <!-- <button class="nav-button right" (click)="scrollRight()">›</button> -->
+</div>

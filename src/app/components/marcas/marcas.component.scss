@@ -2,7 +2,6 @@
   overflow: hidden;
   width: 100%;
   background-color: #fff;
-  padding: 1rem 0;
   align-self: center;
   justify-self: center;
 }
@@ -14,7 +13,7 @@
   padding: 1rem;
   cursor: grab;
   overflow-x: scroll;
-  scroll-behavior: auto; // desative smooth para o loop ficar mais suave
+  scroll-behavior: auto;
   scrollbar-width: none;
 }
 
@@ -24,7 +23,8 @@
 
 .carrossel-slide {
   flex: 0 0 auto;
-  width: calc(30vw / 5); // 5 imagens visíveis por vez (ajuste conforme necessário)
+  width: calc(30vw / 5);
+  min-width: 100px;
   height: auto;
   display: flex;
   align-items: center;

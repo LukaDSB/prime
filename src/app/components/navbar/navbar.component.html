@@ -3,7 +3,7 @@
 
     <div class="navbar-left">
       <a href="https://exemplo.com/home" target="_blank" rel="noopener noreferrer">
-        <img src="../../../assets/neogrid.svg">
+        <img class="logo" src="../../../assets/LOGO PRIME HORIZONTAL_NOVA_branca.png">
       </a>
 
       <div class="dropdown" *ngFor="let menu of dropdowns">
@@ -11,18 +11,27 @@
           {{ menu.title }}
         </button>
         <div class="dropdown-menu">
-          <a *ngFor="let item of menu.items" href="#">{{ item }}</a>
+          <a *ngFor="let item of menu.items" [href]="item.link" target="_blank">{{ item.text }}</a>
+        </div>
+        <div>
         </div>
       </div>
+      <a href="https://w.app/cx4mob">Contato</a>
     </div>
 
     <div class="navbar-right">
-      <a href="https://exemplo.com/vendas" target="_blank" rel="noopener noreferrer" class="btn btn-sales">
+      <a href="https://w.app/cx4mob">
+        <img class="redes" src="../../../assets/WhatsApp.svg" alt="">
+      </a>
+      <a href="https://www.instagram.com/prime.solucao?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+        <img class="redes" src="../../../assets/InstagramLogo.svg" alt="">
+      </a>
+      <!-- <a href="https://exemplo.com/vendas" target="_blank" rel="noopener noreferrer" class="btn btn-sales">
         Fale com vendas
       </a>
       <a href="https://exemplo.com/vendas" target="_blank" rel="noopener noreferrer" class="btn btn-sales">
         Login
-      </a>
+      </a> -->
     </div>
 
   </div>

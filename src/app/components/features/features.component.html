@@ -1,0 +1,13 @@
+<section class="features-container">
+
+  <div class="feature-card" *ngFor="let feature of features">
+
+    <img [src]="feature.iconUrl" [alt]="feature.title + ' Icon'" class="feature-icon">
+
+    <h3 class="feature-title">{{ feature.title }}</h3>
+
+    <p class="feature-description">{{ feature.description }}</p>
+
+  </div>
+
+</section>

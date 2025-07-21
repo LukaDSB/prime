@@ -3,7 +3,6 @@
   height: 10vh;
   display: flex;
   justify-items: center;
-  //background-color: lightcyan;
 }
 
 .inner-content{
@@ -62,6 +61,34 @@
   }
 }
 
-.navbar-right > a{
+.navbar-left .logo {
+  width: 10vw; 
+  min-width: 130px;
+  height: auto; 
+}
+
+.navbar-left a{
   color: white;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 1vw;
+}
+
+.redes{
+  width: 40px;
+}
+
+.navbar-right{
+  display: flex;
+  flex-direction: row;
+  gap:2vw;
+}
+
+@media (max-width: 1310px) {
+  .inner-content{
+    width: 90vw;
+    margin: 0;
+    padding: 2%;
+    justify-content: space-between;
+  }
 }

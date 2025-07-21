@@ -1,7 +1,17 @@
 <section class="carrossel-container">
-  <div #track class="carrossel-track">
+  <div
+    #track
+    class="carrossel-track"
+    (mousedown)="startDrag($event)"
+    (touchstart)="startDrag($event)"
+    (mouseleave)="stopDrag()"
+    (mouseup)="stopDrag()"
+    (touchend)="stopDrag()"
+    (mousemove)="dragMove($event)"
+    (touchmove)="dragMove($event)"
+  >
     <div class="carrossel-slide" *ngFor="let marca of marcas">
-      <img [src]="marca" alt="Marca parceira">
+      <img [src]="marca" alt="Marca parceira" draggable="false" />
     </div>
   </div>
 </section>

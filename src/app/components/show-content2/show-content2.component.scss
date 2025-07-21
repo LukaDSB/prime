@@ -1,0 +1,32 @@
+.container{
+    position: relative;
+}
+
+
+@media (max-width: 992px) {
+    .imgCont {
+        display: none;
+    }
+
+    .bubblePai {
+        display: flex;
+        justify-content: center; 
+        align-items: center;    
+        width: 100%;
+        margin-left: 15%;
+    }
+
+    .bubble-container {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 768px) {
+    .txt-section{
+        margin-bottom: 5vh;
+    }
+
+    .bubblePai{
+        margin: 0;
+    }
+}

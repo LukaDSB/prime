@@ -1,27 +1,160 @@
-.section{
-  background-color: lightgreen;
+.section {
   display: flex;
   flex-direction: column;
-  height: 40vh;
-  padding: 10;
+  min-height: 40vh;
+  padding: 2rem;
   width: 100%;
   justify-content: center;
+  position: relative; 
+  overflow: hidden;
 }
 
-.text-container{
-  background-color: lightpink;
-  width: 30vw;
+.carousel-container{
+  z-index: 1;
+  margin: 5vh 0;
+}
+
+.text-container {
+  width: clamp(300px, 40vw, 600px); 
   height: auto;
   align-self: center;
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
-.botao{
+.text-container h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.botao {
   display: inline-block;
-  background-color: #ff0000; /* Cor vermelha */
+  background-color: #ff0000;
   color: #fff;
   padding: 12px 25px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #cc0000;
+}
+
+.hexagon {
+  position: absolute;
+  z-index: -2;
+  top: 30%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  
+  width: clamp(280px, 35vw, 450px); 
+  aspect-ratio: 1 / 1;            
+  height: auto;                      
+  
+  mask-image: url("../../../assets/hexConteudo.svg");
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("../../../assets/hexConteudo.svg");
+  -webkit-mask-size: cover;
+}
+
+
+.hexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hexagon2 {
+  position: absolute;
+  z-index: -1;
+  top: 30%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  
+  width: clamp(280px, 35vw, 480px); 
+  aspect-ratio: 1 / 1;            
+  height: auto;                      
+}
+
+.hexagon2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.5rem;
+    min-height: 50vh;
+  }
+  
+  .text-container {
+    width: clamp(90%, 60vw, 400px);
+  }
+  
+  .app-hexagono {
+    bottom: -10%;
+    right: -20%;
+  }
+  
+  /* ADICIONE ESTAS REGRAS PARA O HEXÁGONO EM TELAS MENORES 👇 */
+  .hexagon {
+    width: clamp(200px, 50vw, 280px); /* Tamanho menor para mobile */
+    right: -5%; /* Ajusta a posição para não sair da tela */
+    top: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.5rem;
+    min-height: 50vh;
+  }
+  
+  .text-container {
+    width: clamp(90%, 60vw, 400px);
+  }
+  
+  .app-hexagon2o {
+    bottom: -10%;
+    right: -20%;
+  }
+  
+  /* ADICIONE ESTAS REGRAS PARA O HEXÁGONO EM TELAS MENORES 👇 */
+  .hexagon2 {
+    width: clamp(200px, 50vw, 280px); /* Tamanho menor para mobile */
+    right: -20%; /* Ajusta a posição para não sair da tela */
+    top: 20%;
+  }
+  
+  .hexagon {
+    width: clamp(200px, 50vw, 280px); /* Tamanho menor para mobile */
+    right: -20%; /* Ajusta a posição para não sair da tela */
+    top: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.5rem;
+    min-height: 50vh;
+  }
+
+  .text-container {
+    width: clamp(90%, 70vw, 400px);
+  }
+  
+  .app-hexagono {
+    bottom: -10%;
+    right: -20%;
+  }
 }

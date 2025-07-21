@@ -1,0 +1,74 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+  padding: 2rem;
+  width: 100%;
+  justify-content: center;
+  position: relative; 
+  overflow: hidden;
+}
+
+.hexagon {
+  position: absolute;
+  z-index: -2;
+  top: 30%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  
+  width: clamp(280px, 35vw, 450px); 
+  aspect-ratio: 1 / 1;            
+  height: auto;                      
+  
+  mask-image: url("../../../assets/hexConteudo.svg");
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("../../../assets/hexConteudo.svg");
+  -webkit-mask-size: cover;
+}
+
+
+.hexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hexagon2 {
+  position: absolute;
+  z-index: -1;
+  top: 30%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  
+  width: clamp(280px, 35vw, 480px); 
+  aspect-ratio: 1 / 1;            
+  height: auto;                      
+}
+
+.hexagon2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 995px) {
+  .text-container{
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .hexagon{
+    display: none;
+  }
+
+  .hexagon2{
+    display: none;
+  }
+}
