@@ -15,7 +15,6 @@ import { Footer1Component } from './components/footer1/footer1.component';
 import { Footer2Component } from './components/footer2/footer2.component';
 import { HexagonoComponent } from './components/hexagono/hexagono.component';
 import { CardCarouselComponent } from './components/card-carousel/card-carousel.component';
-import { SecaoDadosConsumoComponent } from './components/secao-dados-consumo/secao-dados-consumo.component';
 import { Hexagono2Component } from './components/hexagono2/hexagono2.component';
 import { DividerComponent } from './components/divider/divider.component';
 import { FeaturesComponent } from './components/features/features.component';
@@ -33,7 +32,6 @@ import { FeaturesComponent } from './components/features/features.component';
     Footer2Component,
     HexagonoComponent,
     CardCarouselComponent,
-    SecaoDadosConsumoComponent,
     Hexagono2Component,
     DividerComponent,
   ],

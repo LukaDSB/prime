@@ -23,25 +23,25 @@ export class CardCarouselComponent implements AfterViewInit {
     {
       titulo: 'Neogrid',
       descricao:
-        'Adcos otimiza sua atuação no canal Farma com uso do aplicativo Trade Force.Adcos otimiza sua atuação no canal Farma com uso do aplicativo Trade Force.al Farma com uso do aplicativo Trade Force.al Farma com uso do aplicativo Trade Force.',
+        'Descrição Neogrid',
       imagem: '../',
       link: 'https://exemplo.com/historia/caimed',
     },
     {
       titulo: 'Mercos',
-      descricao: 'Melhoria no controle de estoque com soluções digitais.soluções digitais.soluções digitais.',
+      descricao: 'Descrição Mercos',
       imagem: 'https://via.placeholder.com/60',
       link: 'https://exemplo.com/historia/drogariax',
     },
     {
       titulo: 'Conciliador Valida',
-      descricao: 'Redução de perdas com gestão automatizada.',
+      descricao: 'Descrição conciliador',
       imagem: 'https://via.placeholder.com/60',
       link: 'https://exemplo.com/historia/saude',
     },{
       titulo: 'Consultorias',
       descricao:
-        'Adcos otimiza sua atuação no canal Farma com uso do aplicativo Trade Force.',
+        'Descrição consultorias',
       imagem: 'https://neogrid.com/wp-content/uploads/2024/03/Adcos-60x60.webp',
       link: 'https://exemplo.com/historia/caimed',
     }

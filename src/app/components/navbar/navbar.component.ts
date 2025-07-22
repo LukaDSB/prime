@@ -14,12 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
 export class NavbarComponent {
   logoUrl = 'assets/logo-neogrid.png';
 
-  // dropdowns = [
-  //   { title: 'Nossas Soluções', items: ['Conciliador de cartões', 'Consultoria Empresarial', 'Automação e Sistema de Gestão', 'App Força de Vendas', 'E-Commerce B2B', 'Marketplace','Auditoria Fiscal de Produtos'], link:"https://www.primess.com.br/conciliação-de-cartões" },
-  //   { title: 'Sobre', items: ['Consultoria', 'Suporte', 'Treinamento'], link:"https://www.primess.com.br/conciliação-de-cartões" },
-  //   { title: 'Aprenda', items: ['Varejo', 'Indústria', 'Logística'], link:"https://www.primess.com.br/conciliação-de-cartões" },
-  // ];
-
   dropdowns = [
     {
       title: 'Nossas Soluções',
